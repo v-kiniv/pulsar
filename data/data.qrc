@@ -1,0 +1,56 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="app_logo_light">icons/app_logo_light.png</file>
+        <file alias="loading_dark">icons/loading_dark.gif</file>
+        <file alias="loading_small_dark">icons/loading_small_dark.gif</file>
+        <file alias="loading_light">icons/loading_light.gif</file>
+        <file alias="refresh">icons/refresh.png</file>
+        <file alias="user_small">icons/user_small.png</file>
+        <file alias="new_tab">icons/new_tab.png</file>
+        <file alias="bkg">icons/bkg.png</file>
+        <file alias="play_small">icons/play_small.png</file>
+        <file alias="queue">icons/queue.png</file>
+        <file alias="settings_general">icons/settings_general.png</file>
+        <file alias="settings_list">icons/settings_list.png</file>
+        <file alias="settings_net">icons/settings_net.png</file>
+        <file alias="circle_empty">icons/circle_empty.png</file>
+        <file alias="circle_list">icons/circle_list.png</file>
+        <file alias="circle_one">icons/circle_one.png</file>
+        <file alias="next">icons/next.png</file>
+        <file alias="prev">icons/prev.png</file>
+        <file alias="play">icons/play.png</file>
+        <file alias="circle_all">icons/circle_all.png</file>
+        <file alias="menu">icons/menu.png</file>
+        <file alias="settings_play">icons/settings_play.png</file>
+        <file alias="loudspeaker_light">icons/loudspeaker_light.png</file>
+        <file alias="loudspeaker_light_off">icons/loudspeaker_light_off.png</file>
+        <file alias="pulsar">icons/pulsar.png</file>
+        <file alias="tab_library">icons/tab_library.png</file>
+        <file alias="tab_local">icons/tab_local.png</file>
+        <file alias="tab_search">icons/tab_search.png</file>
+        <file alias="tab_suggestions">icons/tab_suggestions.png</file>
+        <file alias="tab_db">icons/tab_db.png</file>
+        <file alias="tray_default">icons/tray_default.png</file>
+        <file alias="tray_playing">icons/tray_playing.png</file>
+        <file alias="tray_paused">icons/tray_paused.png</file>
+        <file alias="settings_window">icons/settings_window.png</file>
+        <file alias="settings_shortcuts">icons/settings_shortcuts.png</file>
+        <file alias="panel_download">icons/panel_download.png</file>
+        <file alias="panel_listadd">icons/panel_listadd.png</file>
+        <file alias="panel_libraryadd">icons/panel_libraryadd.png</file>
+        <file alias="vk_on">icons/vk_on.png</file>
+        <file alias="lf_on">icons/lf_on.png</file>
+        <file alias="lf">icons/lf.png</file>
+        <file alias="vk">icons/vk.png</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file alias="bkg_light">images/bkg_light.png</file>
+        <file alias="cover_back">images/cover_background.png</file>
+        <file alias="no_cover">images/no_cover.png</file>
+        <file alias="about_bg">images/about_bg.png</file>
+        <file alias="prog_sub">images/prog_sub.png</file>
+        <file alias="prog_add">images/prog_add.png</file>
+        <file alias="handle">images/handle.png</file>
+        <file alias="handle_hover">images/handle_hover.png</file>
+    </qresource>
+</RCC>
