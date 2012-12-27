@@ -85,12 +85,13 @@ void About::setupUi()
     lAuthorR3->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
     sLayout->addWidget(lAuthorR3, 6,0);
 
-    sLayout->addItem(new QSpacerItem( 0, 20, QSizePolicy::Fixed, QSizePolicy::Fixed), 7, 0);
+    sLayout->addItem(new QSpacerItem( 0, 10, QSizePolicy::Fixed, QSizePolicy::Fixed), 7, 0);
 
     QLabel *lDonate = new QLabel(tr("If you like this app, you can donate some money for its development")+"<br><a href=\"https://www.paypal.com/cgi-bin/webscr/?cmd=_s-xclick&hosted_button_id=EGUW4R7ZSMQAW&submit\" style=\"color: #6FE7FF;\">"+tr("Donate through PayPal")+"</a>");
     lDonate->setOpenExternalLinks(true);
     lDonate->setAlignment(Qt::AlignTop|Qt::AlignHCenter);
     lDonate->setWordWrap(true);
+    lDonate->setStyleSheet("font-size: 8pt;");
     sLayout->addWidget(lDonate, 8,0);
 
     sLayout->addItem(new QSpacerItem( 0, 0, QSizePolicy::Fixed, QSizePolicy::Expanding), 9, 0);
@@ -98,7 +99,7 @@ void About::setupUi()
     QLabel *lLicense = new QLabel(QString(tr("The program is provided as is with no warranty of any kind, including the warranty of design, merchantability and fitness for a particular purpose.")));
     lLicense->setWordWrap(true);
     lLicense->setAlignment(Qt::AlignBottom|Qt::AlignHCenter);
-    lLicense->setStyleSheet("font-size: 8pt;");
+    lLicense->setStyleSheet("font-size: 7pt;");
     sLayout->addWidget(lLicense, 10,0);
 }
 
