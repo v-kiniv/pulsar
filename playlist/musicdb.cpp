@@ -71,7 +71,7 @@ void MusicDB::getReleases(QString strArtistId)
 
     m_ReleasesModel->clear();
     QStringList entry;
-    entry << "GETALL" << "Get all albums";
+    entry << "GETALL" << tr("Get all albums");
     QStandardItem *item = new QStandardItem(entry.at(1));
     item->setData(QVariant(entry), Qt::UserRole + 1);
     m_ReleasesModel->appendRow(item);
