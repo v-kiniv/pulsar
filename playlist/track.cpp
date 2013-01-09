@@ -233,11 +233,12 @@ void Track::updateMeta()
 
 void Track::updateAnim(int index)
 {
+    Q_UNUSED(index);
     m_iTrack.at(0)->setIcon(QIcon(m_LoadingMov->currentPixmap()));
 
 }
 
-void Track::setMetaEnabled(bool s) { /*m_bMetaEnabled = s;*/ }
+void Track::setMetaEnabled(bool s) { Q_UNUSED(s); /*m_bMetaEnabled = s;*/ }
 
 void Track::setMetaLoaded(bool s)
 {

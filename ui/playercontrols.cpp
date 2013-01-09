@@ -347,17 +347,6 @@ void PlayerControls::tick(QTime pos, QTime len)
 //    }
 }
 
-
-void PlayerControls::setPlayMethod(Player::PlayMethods method)
-{
-    m_playMethod = method;
-}
-
-void PlayerControls::setBuffer(int value)
-{
-    //m_wSeekProgress->setValue(value);
-}
-
 void PlayerControls::setPlayingState(bool s)
 {
     m_wbPlay->setChecked(s);

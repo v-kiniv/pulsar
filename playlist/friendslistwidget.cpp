@@ -144,6 +144,7 @@ bool FriendsListWidget::eventFilter(QObject *target, QEvent *event)
 
 void FriendsListWidget::listResize(QSize size)
 {
+    Q_UNUSED(size);
     m_wlLoading->move(m_wList->rect().center() - m_wlLoading->rect().center());
 }
 

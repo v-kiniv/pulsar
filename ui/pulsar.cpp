@@ -193,8 +193,6 @@ void Pulsar::setupBottomUi()
 
     connect(m_player, SIGNAL(tick(QTime, QTime)), m_PlayerControls, SLOT(tick(QTime, QTime)));
     connect(m_player, SIGNAL(initVolume(double)), m_PlayerControls, SLOT(setVolume(double)));
-    connect(m_player, SIGNAL(playMethodChanged(Player::PlayMethods)), m_PlayerControls, SLOT(setPlayMethod(Player::PlayMethods)));
-    connect(m_player, SIGNAL(bufferChanged(int)), m_PlayerControls, SLOT(setBuffer(int)));
 
     connect(m_PlayerControls, SIGNAL(shuffle(int)), m_plistgroup, SLOT(setShuffle(int)));
     connect(m_plistgroup, SIGNAL(shuffleModeChanged(int)), m_PlayerControls, SLOT(setShuffle(int)));
@@ -214,11 +212,6 @@ void Pulsar::setupBottomUi()
     connect(m_PlayerControls, SIGNAL(volumeChanged(double)), m_player, SLOT(setVolume(double)));
 
     connect(m_player, SIGNAL(trackChanged(Track*)), m_PlayerControls, SLOT(onTrackChanged(Track*)));
-}
-
-void Pulsar::registerShortcuts()
-{
-
 }
 
 
@@ -344,11 +337,6 @@ void Pulsar::setRepeat(int mode)
 
 }
 
-void Pulsar::setStatus(bool state)
-{
-
-}
-
 void Pulsar::setTitles(QString artist, QString title)
 {
     setWindowTitle(title + " - " + artist);
@@ -386,9 +374,3 @@ void Pulsar::raiseWindow()
     setWindowState(Qt::WindowActive);
     activateWindow();
 }
-
-void Pulsar::test()
-{
-
-}
-

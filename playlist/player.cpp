@@ -37,19 +37,11 @@ Player::Player(QObject *parent) :
     m_Prev = 0;
     m_Current = 0;
 
-    m_bBuffering = true;
-
     m_bArtRequested = false;
 
     m_bBroadcastStatus = Settings::instance()->getValue("player/status").toBool();
 
     m_State = Stoped;
-
-    // Buffering
-    m_BaBuffer = new QByteArray();
-    m_Buffer = 0;
-    m_nReply = 0;
-    m_BufferPercent = 0;
 
     // QGstreamer init
     m_GstPlayer = new GstPlayer(this);
@@ -137,11 +129,6 @@ int Player::currentTime()
 
 }
 
-qint64 Player::longPos()
-{
-
-}
-
 void Player::setState(Player::States state)
 {
     m_State = state;
@@ -164,13 +151,6 @@ void Player::setState(Player::States state)
 
 }
 
-void Player::setPlayMethod(Player::PlayMethods method)
-{
-    m_PlayMethod = method;
-
-    Q_EMIT playMethodChanged(m_PlayMethod);
-}
-
 void Player::playTrack(Track *p)
 {
     Q_EMIT trackChanged();
@@ -183,59 +163,13 @@ void Player::playTrack(Track *p)
     m_GstPlayer->stop();
     setState(Player::Stoped);
 
-    // Send null states to playcontrolls
-    Q_EMIT bufferChanged(0);
-
     Q_EMIT newTitles(p->artist(), p->title());
 
+    m_GstPlayer->stop();
+    m_GstPlayer->setUri(p->url());
+    m_GstPlayer->play();
 
-    // Buffering mode
-    if(false) {//bufferring mode disabled
-
-        if(!m_Buffer) {
-            m_Buffer = new QBuffer(this);
-            m_Buffer->setBuffer(m_BaBuffer);
-
-            //m_MediaObject->setCurrentSource(m_Buffer);
-
-        // Clear buffer
-        } else {
-
-            m_Buffer->close();
-                    m_Buffer->open(QBuffer::ReadWrite);
-            m_Buffer->seek(0);
-        }
-        m_BufferBlock = 0;
-
-        QNetworkRequest req;
-        req.setUrl(QUrl(m_Current->url()));
-
-        if(m_nReply) {
-            if(m_nReply->isRunning()) {
-                m_nReply->abort();
-            }
-        }
-
-        m_nReply = m_nManager.get(req);
-        connect(m_nReply, SIGNAL(readyRead()), SLOT(readData()));
-        connect(m_nReply, SIGNAL(downloadProgress(qint64,qint64)), SLOT(bufferProgress(qint64,qint64)));
-        //connect(m_nReply, SIGNAL(finished()), this, SLOT(rFinished()));
-        connect(m_nReply, SIGNAL(error(QNetworkReply::NetworkError)), SLOT(networkError(QNetworkReply::NetworkError)));
-
-        setState(Playing);
-        setPlayMethod(Player::Buffer);
-
-    // Direct mode
-    } else {
-        m_GstPlayer->stop();
-        m_GstPlayer->setUri(p->url());
-        m_GstPlayer->play();
-
-        setState(Playing);
-        setPlayMethod(Player::Direct);
-
-    }
-
+    setState(Playing);
     m_bArtRequested = false;
 
     Q_EMIT changed();
@@ -267,97 +201,6 @@ void Player::trackUpdated(bool s)
 void Player::setInitVolume()
 {
     Q_EMIT initVolume(Settings::instance()->getValue("player/volume").toDouble());
-}
-
-
-void Player::networkError(QNetworkReply::NetworkError e)
-{
-    //qDebug() << "NTWORK ERROR:: " << e;
-
-    if(e == QNetworkReply::ContentNotFoundError) {
-        m_Current->updateUrl();
-        connect(m_Current, SIGNAL(updated(bool)), SLOT(trackUpdated(bool)));
-    }
-}
-
-void Player::readData()
-{
-    static qint64 lastPos = 0;
-
-    ++m_BufferBlock;
-
-    qint64 blockSize = m_nReply->size();
-    QByteArray data = m_nReply->readAll();
-
-    if(m_BufferLenght > 0 && m_BufferBlock == 1) {
-        m_BaBuffer->clear();
-        m_BaBuffer->resize(0);
-        m_BaBuffer->fill('\0', m_BufferLenght);
-
-
-        lastPos = 0;
-    }
-
-    m_BaBuffer->replace(lastPos, blockSize, data);
-    data.clear();
-    data.detach();
-    lastPos += blockSize;
-}
-
-void Player::bufferProgress(qint64 current, qint64 total)
-{
-    static int duration = 0;
-    static bool canPlay = false;
-
-    if(m_BufferBlock == 0) {
-        duration = 0;
-        canPlay = false;
-    }
-
-    m_BufferLenght = total;
-
-    if(duration == 0) {
-        QRegExp rx("(.*):(.*)");
-        rx.indexIn(m_Current->duration());
-        QString c1 = rx.capturedTexts()[1];
-        QString c2 = rx.capturedTexts()[2];
-        int dur1 = c1.toInt();
-        int dur2 = c2.toInt();
-        duration = dur1 * 60;
-        duration += dur2;
-    }
-
-    int percent = 0;
-    int playPercent = 0;
-    if(total > 0 && current > 0) {
-        percent = (current * 100 ) / total;
-        int tPercent = (duration * 100 ) / 150;
-        if(tPercent > 100) {
-            playPercent = 2;
-        } else {
-            if(tPercent+40 < 100)
-                playPercent = 102 - (tPercent+40);
-            else
-                playPercent = 2;
-        }
-    }
-
-    if(percent > playPercent && !canPlay) {
-        setState(Player::Stoped);
-
-///FIXME
-        m_GstPlayer->setBuffer(m_Buffer);
-
-        setState(Player::Playing);
-        canPlay = true;
-    }
-
-    if(current > 0)
-        m_BufferPercent = (current * 1000 ) / total;
-    else
-        m_BufferPercent = 0;
-
-    Q_EMIT bufferChanged(m_BufferPercent);
 }
 
 void Player::positionChanged()
@@ -442,48 +285,44 @@ void Player::onPrevDeleted()
 
 void Player::setTrack(Track *p)
 {
-    // If play track again AND buffer is full - don't buffering again, just play
-    if(p == m_Current && m_PlayMethod == Player::Buffer && m_BufferPercent == 1000) {
+    if(m_Current) {
+        m_Prev = m_Current;
+        connect(m_Prev, SIGNAL(destroyed()), SLOT(onPrevDeleted()));
+    }
 
+    if(m_Prev) {
+        m_Prev->setDefaultState();
+        disconnect(m_Prev, SIGNAL(updated(bool)), this, SLOT(trackUpdated(bool)));
+        m_Prev->setLast(false);
+    }
+
+    m_Current = p;
+    connect(m_Current, SIGNAL(destroyed()), SLOT(prevDeleted()));
+
+    m_Current->setLast(true);
+
+    if(m_Current->url().isEmpty()) {
+        m_Current->updateUrl();
+        connect(m_Current, SIGNAL(updated(bool)), SLOT(trackUpdated(bool)));
     } else {
-        if(m_Current) {
-            m_Prev = m_Current;
-            connect(m_Prev, SIGNAL(destroyed()), SLOT(onPrevDeleted()));
-        }
+        playTrack(m_Current);
+    }
 
-        if(m_Prev) {
-            m_Prev->setDefaultState();
-            disconnect(m_Prev, SIGNAL(updated(bool)), this, SLOT(trackUpdated(bool)));
-            m_Prev->setLast(false);
-        }
+    if(m_bBroadcastStatus)
+        m_VkActions->setStatus(m_Current);
 
-        m_Current = p;
-        connect(m_Current, SIGNAL(destroyed()), SLOT(prevDeleted()));
+    // Meta
+    if(m_Current->metaLoaded()) {
+        Q_EMIT metaChanged();
 
-        m_Current->setLast(true);
-
-        if(m_Current->url().isEmpty()) {
-            m_Current->updateUrl();
-            connect(m_Current, SIGNAL(updated(bool)), SLOT(trackUpdated(bool)));
-        } else {
-            playTrack(m_Current);
-        }
-
-        if(m_bBroadcastStatus)
-            m_VkActions->setStatus(m_Current);
-
-        // Meta
-        if(m_Current->metaLoaded()) {
-            Q_EMIT metaChanged();
-
-            QString artStr;
-            if(!m_bArtRequested && !m_Current->metaAlbum().isEmpty()) {
-                artStr = m_Current->metaArtist() + " " + m_Current->metaAlbum();
-                Q_EMIT loadArt(artStr);
-                m_bArtRequested = true;
-            }
+        QString artStr;
+        if(!m_bArtRequested && !m_Current->metaAlbum().isEmpty()) {
+            artStr = m_Current->metaArtist() + " " + m_Current->metaAlbum();
+            Q_EMIT loadArt(artStr);
+            m_bArtRequested = true;
         }
     }
+
 }
 
 void Player::play()
@@ -581,5 +420,5 @@ void Player::setBroadcastStatus(bool state)
 
 void Player::settingsChanged()
 {
-    m_bBuffering = Settings::instance()->getValue("network/buffering_off").toBool();
+
 }

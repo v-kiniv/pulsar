@@ -84,8 +84,6 @@ private:
     int m_iShuffleMode;
     int m_iRepeatMode;
 
-    Player::PlayMethods m_playMethod;
-
     bool eventFilter(QObject *target, QEvent *event);
 
     void setupTrackbar();
@@ -110,10 +108,6 @@ public Q_SLOTS:
     void setVolume(double);
 
     void tick(QTime pos, QTime len);
-
-    void setPlayMethod(Player::PlayMethods);
-
-    void setBuffer(int);
 
     void setPlayingState(bool);
     void setStatusState(bool);

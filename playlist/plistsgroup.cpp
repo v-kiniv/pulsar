@@ -62,7 +62,8 @@ PlistsGroup::PlistsGroup(QObject *parent) :
 
     loadLists();
 
-    connect(this, SIGNAL(playLast()), m_LastList, SLOT(playLast()));
+    if(m_LastList)
+        connect(this, SIGNAL(playLast()), m_LastList, SLOT(playLast()));
 
     if(m_Settings->getValue("playing/play_on_start").toBool() && m_LastList)
         QTimer::singleShot(200, m_LastList, SLOT(playLast()));

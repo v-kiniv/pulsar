@@ -264,6 +264,7 @@ bool MediaPlayer2Player::CanSeek() const
 
 void MediaPlayer2Player::Seek(qlonglong Offset) const
 {
+    Q_UNUSED(Offset);
     //qDebug() << "MPRIS_SEEK: " << ((m_player->currentTime()) + Offset) / 1000;
     //m_player->seek(((m_player->currentTime()) + Offset) / 1000);
 }

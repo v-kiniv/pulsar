@@ -29,7 +29,6 @@
 #include <QGst/ClockTime>
 #include <QGst/Event>
 #include <QGst/StreamVolume>
-#include <QGlib/Error>
 #include <QGst/Buffer>
 #include <QGst/TagList>
 

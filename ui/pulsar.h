@@ -113,9 +113,6 @@ private:
     // Setup bottom layout
     void setupBottomUi();
 
-    // Register global & local shortcuts
-    void registerShortcuts();
-
     // Init main objects
     void init();
 
@@ -139,15 +136,12 @@ private Q_SLOTS:
     void authError(Auth::Errors);
     void setShuffle(int mode = 0);
     void setRepeat(int mode = 0);
-    void setStatus(bool state);
 
     void setTitles(QString, QString);
     void showWindow();
 
     void current2library();
     void currentDownload();
-
-    void test();
 
 };
 

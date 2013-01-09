@@ -45,13 +45,6 @@ public:
     };
     Q_DECLARE_FLAGS(States, State)
 
-    enum PlayMethod {
-        Buffer = 0x0,
-        Direct = 0x1,
-        File = 0x2
-    };
-    Q_DECLARE_FLAGS(PlayMethods, PlayMethod)
-
     explicit Player(QObject *parent = 0);
 
     // Return pointer to the Player instance
@@ -86,16 +79,9 @@ public:
     // Return current time of current track
     int currentTime();
 
-    // Long pos
-    qint64 longPos();
-
-
 private:
     // State
     Player::States m_State;
-
-    // Play method
-    Player::PlayMethods m_PlayMethod;
 
     // Instance pointer
     static Player *m_instance;
@@ -113,27 +99,12 @@ private:
     // vkaction(track status)
     VkActions *m_VkActions;
 
-    // Network
-    QNetworkAccessManager m_nManager;
-    QNetworkReply *m_nReply;
-
-    // Buffer for cashing mp3
-    QBuffer *m_Buffer;
-    QByteArray *m_BaBuffer;
-    qint64 m_BufferLenght;
-    int m_BufferBlock;
-    int m_BufferPercent;
-
     // Options
-    bool m_bBuffering;
-
     bool m_bArtRequested;
 
     bool m_bBroadcastStatus;
 
     void setState(Player::States);
-    void setPlayMethod(Player::PlayMethods);
-
     void playTrack(Track *p);
 
 Q_SIGNALS:
@@ -150,10 +121,6 @@ Q_SIGNALS:
 
     void initVolume(double);
     void volumeChanged(double);
-
-    void playMethodChanged(Player::PlayMethods);
-
-    void bufferChanged(int);
 
     void newTitles(QString, QString);
 
@@ -181,11 +148,6 @@ private Q_SLOTS:
     void prevDeleted();
     void trackUpdated(bool);
     void setInitVolume();
-    void networkError(QNetworkReply::NetworkError);
-
-    // For buffering
-    void readData();
-    void bufferProgress(qint64,qint64);
 
     // gst
     void positionChanged();

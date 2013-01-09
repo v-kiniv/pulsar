@@ -23,7 +23,6 @@
 #include <QtCore/QTime>
 #include <QtCore/QBuffer>
 #include <QGst/Pipeline>
-#include <QGst/Ui/VideoWidget>
 #include <QMap>
 
 class GstPlayer : public QObject

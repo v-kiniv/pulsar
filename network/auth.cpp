@@ -159,6 +159,7 @@ void Auth::authRFirst(QNetworkReply *nReply)
 
 void Auth::authRSecond(QNetworkReply *nReply)
 {
+    Q_UNUSED(nReply);
     /*TODO
       maybe check for correct data received
       Q_EMIT signal to save cookies to file
