@@ -507,6 +507,11 @@ bool ShortcutDelegate::eventFilter(QObject *object, QEvent *event)
             return true;
         }
 
+        if(ke->key() == Qt::Key_Backspace) {
+            lEdit->clear();
+            return true;
+        }
+
         if(ke->key() == Qt::Key_Escape) {
             this->closeEditor(lEdit);
             return true;
