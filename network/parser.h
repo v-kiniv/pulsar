@@ -26,7 +26,7 @@ public:
     void search(QString str);
 
     // Loads library by given id
-    void library(QString id);
+    void library(QString id, QString gid = "0");
 
     // Loads user music suggestions
     void suggestions();

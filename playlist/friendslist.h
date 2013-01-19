@@ -56,7 +56,7 @@ private:
     void getUserId(QString userLogin);
 
 Q_SIGNALS:
-    void friendSelected(QString, QString);
+    void friendSelected(QString, QString, QString);
 
 public Q_SLOTS:
 

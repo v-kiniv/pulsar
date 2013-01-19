@@ -59,7 +59,6 @@ FriendsList::FriendsList(QObject *parent) :
 
 void FriendsList::load()
 {
-//    qDebug() << "MID: " << m_Auth->vkId();
     QStringList myId;
     myId << m_Auth->vkId() << tr("My Library");
     add(myId);
@@ -198,7 +197,6 @@ void FriendsList::parseList(QNetworkReply *reply)
 
             i++;
         }
-        //qDebug() << values.toString();
         getAvatars();
         save();
     }
@@ -213,10 +211,15 @@ void FriendsList::parseId(QNetworkReply *reply)
 
     // Get ID
     QString id;
-    QRegExp rx("<a href=\"/audio\\?id=(.*)\" onclick");
+    QString gid;
+    QRegExp rx("<a href=\"/audios(\\d+)\" onclick");
     rx.setMinimal(true);
     rx.indexIn(content);
     id = rx.capturedTexts()[1];
+
+    rx.setPattern("<a href=\"/audios\\-(\\d+)\" onclick");
+    rx.indexIn(content);
+    gid = rx.capturedTexts()[1];
 
     // Get title of group/UserName
     QString title;
@@ -224,7 +227,7 @@ void FriendsList::parseId(QNetworkReply *reply)
     rx.indexIn(content);
     title = Parser::trimXlam(rx.capturedTexts()[1]);
 
-    Q_EMIT friendSelected(id, title);
+    Q_EMIT friendSelected(id, gid, title);
 }
 
 
@@ -290,17 +293,14 @@ void FriendsList::listItemAcivated(QModelIndex index)
 {
     QStringList data = m_ProxyModel->data(index, Qt::UserRole + 1).toStringList();
     QString vkid = data.at(0) == "0" ? m_Auth->vkId() : data.at(0);
-    Q_EMIT friendSelected(vkid, data.at(1));
+    Q_EMIT friendSelected(vkid, "0", data.at(1));
     m_Widget->hide();
     m_Widget->clear();
 }
 
 void FriendsList::setId(QString id)
 {
-//    if(id.toInt() > 0)
-//        Q_EMIT friendSelected(id, "ID " + id);
-//    else
-        getUserId(id);
+    getUserId(id);
     m_Widget->hide();
     m_Widget->clear();
 }
@@ -312,8 +312,6 @@ void FriendsList::refreshList()
     QStringList myId;
     myId << m_Auth->vkId() << tr("My Library");
     add(myId);
-
-    //qDebug() << m_Auth->vkId();
 
     getList();
 }

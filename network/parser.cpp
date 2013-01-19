@@ -100,11 +100,11 @@ void Parser::search(QString str)
     Q_EMIT busy();
 }
 
-void Parser::library(QString id)
+void Parser::library(QString id, QString gid)
 {
     m_ReqType = 1;
 
-    QNetworkRequest request = QNetworkRequest(QUrl("http://vk.com/audio?act=load_audios_silent&al=1&edit=0&gid=0&id="+id));
+    QNetworkRequest request = QNetworkRequest(QUrl(QString("http://vk.com/audio?act=load_audios_silent&al=1&edit=0&gid=%1&id=%0").arg(id).arg(gid)));
 
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(libraryReply(QNetworkReply*)));

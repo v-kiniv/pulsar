@@ -91,6 +91,7 @@ private:
 
     // Library ID
     QString m_LibraryId;
+    QString m_LibraryGid;
     QString m_LibraryName;
 
     /* List hash
@@ -155,7 +156,7 @@ private:
     void load();//Q_EMIT addQueue(pT);
     // IMPLEMENT DTACK
 
-    void setLibId(QString lbId);
+    void setLibId(QString lbId, QString lbGid);
 
     // Change title by content
     void setContentTitle(QString);
@@ -186,7 +187,7 @@ private Q_SLOTS:
     void parserBusy();
     void parserFree();
 
-    void librarySelected(QString, QString);
+    void librarySelected(QString, QString gid, QString);
     void update();
 
     void removeTrack();

@@ -90,7 +90,7 @@ Playlist::Playlist(PlaylistWidget::ListTypes listType, QString title, quint64 ha
             connect(m_listWidget, SIGNAL(loadMore()), m_Parser, SLOT(loadMoreResults()));
         break;
         case PlaylistWidget::AudioLib:
-            connect(m_listWidget->friendsList(), SIGNAL(friendSelected(QString,QString)), SLOT(librarySelected(QString,QString)));
+            connect(m_listWidget->friendsList(), SIGNAL(friendSelected(QString,QString,QString)), SLOT(librarySelected(QString,QString,QString)));
             connect(m_listWidget, SIGNAL(refresh()), SLOT(refresh()));
         break;
         case PlaylistWidget::Suggestions:
@@ -123,7 +123,7 @@ Playlist::Playlist(PlaylistWidget::ListTypes listType, QString title, quint64 ha
        m_bNewly &&
        m_Settings->getValue("playlist/autoload_library").toBool()
        )
-        librarySelected(m_Auth->vkId(), tr("My Library"));
+        librarySelected(m_Auth->vkId(), "0", tr("My Library"));
 
     // Actions on newly created plalylists
     if(m_bNewly) {
@@ -133,7 +133,7 @@ Playlist::Playlist(PlaylistWidget::ListTypes listType, QString title, quint64 ha
             break;
             case PlaylistWidget::AudioLib:
             if(m_Settings->getValue("playlist/autoload_library").toBool())
-                librarySelected(m_Auth->vkId(), tr("My Library"));
+                librarySelected(m_Auth->vkId(), "0", tr("My Library"));
             break;
             case PlaylistWidget::Suggestions:
                 refresh();
@@ -315,7 +315,7 @@ void Playlist::load()
                 m_listWidget->setSearchStr(m_sSearch);
             break;
             case PlaylistWidget::AudioLib:
-                setLibId(sfile.value("libraryId").toString());
+            setLibId(sfile.value("libraryId").toString(), "0");
                 m_LibraryName = sfile.value("libraryName").toString();
                 m_listWidget->setLibraryName(m_LibraryName);
 
@@ -444,9 +444,10 @@ void Playlist::save()
     sfile.endArray();
 }
 
-void Playlist::setLibId(QString lbId)
+void Playlist::setLibId(QString lbId, QString lbGid)
 {
     m_LibraryId = lbId;
+    m_LibraryGid = lbGid;
 
     if(m_listType == PlaylistWidget::AudioLib && lbId == m_Auth->vkId()) {
         m_toLibraryA->setDisabled(true);
@@ -516,8 +517,8 @@ void Playlist::refresh()
     clearList();
 
     if(m_listType == PlaylistWidget::AudioLib) {
-        if(m_LibraryId > 0) {
-            m_Parser->library(m_LibraryId);
+        if(m_LibraryId > 0 || m_LibraryGid > 0) {
+            m_Parser->library(m_LibraryId, m_LibraryGid);
         }
     }
 
@@ -538,9 +539,9 @@ void Playlist::parserFree()
     save();
 }
 
-void Playlist::librarySelected(QString id, QString name)
+void Playlist::librarySelected(QString id, QString gid, QString name)
 {
-    setLibId(id);
+    setLibId(id, gid);
     m_LibraryName = name;
 
     m_listWidget->setLibraryName(name);
@@ -553,7 +554,7 @@ void Playlist::librarySelected(QString id, QString name)
 
 void Playlist::update()
 {
-    setLibId(m_LibraryId);
+    setLibId(m_LibraryId, m_LibraryGid);
 }
 
 void Playlist::removeTrack()
