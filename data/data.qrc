@@ -42,6 +42,7 @@
         <file alias="lf_on">icons/lf_on.png</file>
         <file alias="lf">icons/lf.png</file>
         <file alias="vk">icons/vk.png</file>
+        <file alias="dropdown_arrow">icons/dropdown_arrow.png</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="bkg_light">images/bkg_light.png</file>

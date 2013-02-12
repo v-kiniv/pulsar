@@ -45,12 +45,14 @@ private:
     QList<QStandardItem *> m_ItemsList;
     QStringList m_AvatarsUrls;
     QStandardItemModel *m_Model;
+    QStandardItemModel *m_GroupsModel;
     int m_AvatarI;
     QSortFilterProxyModel *m_ProxyModel;
 
     Settings *m_Settings;
 
     void getList();
+    void getGroupsList();
     void getAvatars();
 
     void getUserId(QString userLogin);
@@ -64,6 +66,7 @@ private Q_SLOTS:
     void load();
     void save();
     void parseList(QNetworkReply *);
+    void parseGroupsList(QNetworkReply *);
     void parseId(QNetworkReply *);
     void downloadAvatar(QNetworkReply *);
     void add(QStringList);

@@ -38,6 +38,7 @@ FriendsList::FriendsList(QObject *parent) :
     m_nManager->setCookieJar(m_Auth->cookiejar());
 
     m_Model = new QStandardItemModel(this);
+    m_GroupsModel = new QStandardItemModel(this);
 
     m_ProxyModel = new QSortFilterProxyModel(this);
     m_ProxyModel->setSourceModel(m_Model);
@@ -117,6 +118,17 @@ void FriendsList::getList()
     m_Widget->showLoading();
 }
 
+void FriendsList::getGroupsList()
+{
+    QNetworkRequest request = QNetworkRequest(QUrl("http://vk.com/al_groups.php?act=get_list&al=1&gid=0&tab=groups&mid="+m_Auth->vkId()));
+
+    m_nManager->disconnect();
+    connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(parseGroupsList(QNetworkReply*)));
+    m_nManager->get(request);
+
+    m_Widget->showLoading();
+}
+
 void FriendsList::getAvatars()
 {
     //m_AvatarsUrls.at(m_AvatarI);
@@ -145,6 +157,14 @@ void FriendsList::getUserId(QString userLogin)
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(parseId(QNetworkReply*)));
     m_nManager->get(request);
+}
+
+QString croptext(QString str) {
+    int aSize = 35;
+    if(str.size() > aSize)
+        return str.left(aSize)+"...";
+    else
+        return str;
 }
 
 void FriendsList::parseList(QNetworkReply *reply)
@@ -194,6 +214,64 @@ void FriendsList::parseList(QNetworkReply *reply)
             entry << id << name;
 
             add(entry);
+
+            i++;
+        }
+        getAvatars();
+        save();
+    }
+    m_Widget->hideLoading();
+}
+
+void FriendsList::parseGroupsList(QNetworkReply *reply)
+{
+    m_ItemsList.clear();
+//    m_List.clear();
+    m_AvatarsUrls.clear();
+    m_AvatarI = 0;
+
+    QString content;
+    QTextCodec * codec = QTextCodec::codecForName("windows-1251");
+    content = codec->toUnicode(reply->readAll());
+
+    qDebug() << content;
+
+    QString data;
+    content.replace("\\n", "");
+    content.replace("\\", "");
+
+    QRegExp rx("<!json>(.*)\\]\\]");
+    rx.setMinimal(true);
+    rx.indexIn(content);
+    data = rx.capturedTexts()[1];
+
+    data.append("]]");
+
+    if(data != "")
+    {
+        QScriptEngine engine;
+        QScriptValue values;
+        values = engine.evaluate(data);
+        QScriptValue item;
+
+
+        QString id;
+        QString name;
+        QString avatarUrl;
+        int i = 0;
+        while(values.property(i).toString() != "") {
+            item = values.property(i);
+
+            id = item.property(2).toString();
+            name = croptext(Parser::trimXlam(item.property(0).toString()));
+            avatarUrl = item.property(4).toString();
+
+            m_AvatarsUrls << avatarUrl;
+
+            //QStringList entry;
+            //entry << id << name;
+
+            //add(entry);
 
             i++;
         }
@@ -313,5 +391,6 @@ void FriendsList::refreshList()
     myId << m_Auth->vkId() << tr("My Library");
     add(myId);
 
-    getList();
+//    getList();
+    getGroupsList();
 }

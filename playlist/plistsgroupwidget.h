@@ -20,6 +20,7 @@
 
 #include <QWidget>
 #include <QTabWidget>
+#include <QMenu>
 #include "playlist/playlist.h"
 #include "ui/styledbutton.h"
 
@@ -51,6 +52,8 @@ public:
 private:
     TabWidget *m_tabWidget;
     StyledButton *addTabBtn;
+    StyledButton *m_listsBtn;
+    QMenu *m_listsMenu;
     bool m_bResizeTabs;
 
     // Event filter
@@ -76,6 +79,8 @@ Q_SIGNALS:
 private Q_SLOTS:
     void tabClosed(int index);
     void setCurrentTab();
+    void onTabMoved(int, int);
+    void onTabsListSelected();
 
 public Q_SLOTS:
 

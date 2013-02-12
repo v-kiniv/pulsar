@@ -41,6 +41,8 @@ PlistsGroupWidget::PlistsGroupWidget(QWidget *parent) :
 {
     m_bResizeTabs = false;
 
+
+
     m_tabWidget = new TabWidget(this);
     m_tabWidget->setTabsClosable(true);
     m_tabWidget->tabBar()->setMovable(true);
@@ -53,6 +55,14 @@ PlistsGroupWidget::PlistsGroupWidget(QWidget *parent) :
     addTabBtn->setIcon(QIcon(QPixmap(":/icons/new_tab")));
     addTabBtn->setIconSize(QSize(16,16));
 
+    m_listsBtn = new StyledButton(m_tabWidget);
+    m_listsBtn->setTransparent(true);
+    m_listsBtn->setIcon(QIcon(QPixmap(":/icons/dropdown_arrow")));
+    m_listsBtn->setIconSize(QSize(16,16));
+
+    m_listsMenu = new QMenu(m_listsBtn);
+    m_listsBtn->setMenu(m_listsMenu);
+
     createMenus();
 
     QVBoxLayout *wLayout = new QVBoxLayout(this);
@@ -60,6 +70,7 @@ PlistsGroupWidget::PlistsGroupWidget(QWidget *parent) :
 
     connect(m_tabWidget, SIGNAL(tabCloseRequested(int)), SLOT(tabClosed(int)));
     connect(m_tabWidget->tabBar(), SIGNAL(tabMoved(int,int)), SIGNAL(tabMoved(int,int)));
+    connect(m_tabWidget->tabBar(), SIGNAL(tabMoved(int,int)), SLOT(onTabMoved(int,int)));
 }
 
 void PlistsGroupWidget::addList(Playlist *plist, bool bManually)
@@ -73,6 +84,12 @@ void PlistsGroupWidget::addList(Playlist *plist, bool bManually)
 
     if(bManually)
         QTimer::singleShot(10, this, SLOT(setCurrentTab()));
+
+    QAction *action = new QAction(plist->listTitle(), this);
+    action->setData(m_tabWidget->currentIndex());
+    m_listsMenu->addAction(action);
+
+    connect(action, SIGNAL(triggered()), SLOT(onTabsListSelected()));
 
 }
 
@@ -101,7 +118,6 @@ void PlistsGroupWidget::setTabTitle(int tabIndex, QString tabTitle)
 bool PlistsGroupWidget::eventFilter(QObject *target, QEvent *event)
 {
     if(target == m_tabWidget) {
-        //qDebug() << event->type();
         if(event->type() == QEvent::Resize || event->type() == QEvent::Show || event->type() == QEvent::LayoutRequest) {
             if(event->type() == QEvent::Show) {
                 m_bResizeTabs = true;
@@ -116,6 +132,7 @@ bool PlistsGroupWidget::eventFilter(QObject *target, QEvent *event)
             QString newName = QInputDialog::getText(this, tr("Rename playlist"),
                                                       tr("New title:"), QLineEdit::Normal,
                                                     m_tabWidget->tabBar()->tabText(m_tabWidget->tabBar()->currentIndex()), &ok);
+            m_listsMenu->actions().at(m_tabWidget->tabBar()->currentIndex())->setText(newName);
             if(ok)
                 Q_EMIT renameTab(m_tabWidget->tabBar()->currentIndex(), newName);
         }
@@ -125,7 +142,6 @@ bool PlistsGroupWidget::eventFilter(QObject *target, QEvent *event)
 
 void PlistsGroupWidget::tabsResized()
 {
-    //qDebug() << "resizing tabs";
     int index = m_tabWidget->count()-1;
 
     int tabXs = 0;
@@ -150,6 +166,8 @@ void PlistsGroupWidget::tabsResized()
     } else {
         addTabBtn->setGeometry(m_tabWidget->width() - 30, tabY, tabH, tabH);
     }
+    m_listsBtn->setGeometry(addTabBtn->x(), tabY, tabH, tabH);
+    addTabBtn->setGeometry(addTabBtn->x() - 20, tabY, tabH, tabH);
 
     if(m_bResizeTabs)
         m_tabWidget->tabBar()->setMaximumWidth(m_tabWidget->width() - 35);
@@ -195,6 +213,8 @@ void PlistsGroupWidget::tabClosed(int index)
     if(m_tabWidget->count() > 1) {
         m_tabWidget->removeTab(index);
         Q_EMIT removeTab(index);
+        m_listsMenu->removeAction(m_listsMenu->actions().at(index));
+//        m_listsMenu->move();
     }
 
     tabsResized();
@@ -203,4 +223,21 @@ void PlistsGroupWidget::tabClosed(int index)
 void PlistsGroupWidget::setCurrentTab()
 {
     m_tabWidget->setCurrentIndex(m_tabWidget->count()-1);
+}
+
+void PlistsGroupWidget::onTabMoved(int index1, int index2)
+{
+    QString tab1 = m_listsMenu->actions().at(index1)->text();
+    QString tab2 = m_listsMenu->actions().at(index2)->text();
+
+    m_listsMenu->actions().at(index1)->setText(tab2);
+    m_listsMenu->actions().at(index2)->setText(tab1);
+}
+
+void PlistsGroupWidget::onTabsListSelected()
+{
+    QAction *p = static_cast<QAction*>(sender());
+    if(p) {
+        setActiveTab(m_listsMenu->actions().indexOf(p));
+    }
 }

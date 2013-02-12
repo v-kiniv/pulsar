@@ -49,9 +49,9 @@ FriendsListWidget::FriendsListWidget(QWidget *parent) :
     m_wList->setFrameStyle(0);
     m_wList->installEventFilter(this);
     connect(m_wList, SIGNAL(clicked(QModelIndex)), SIGNAL(itemActivated(QModelIndex)));
-    //m_wList->setStyleSheet("QListView { background-color: rgba(55, 55, 55, 210); } ::item {height: 54px;} ");
+
     m_wList->setStyleSheet("QListView {padding-bottom: 8px; border-radius: 10px; border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom: none; border-right: none; background-color: rgba(55, 55, 55, 0); color: #fff; font-size: 12px;} \
-                           QListView::item  { height: 60px;} \
+                           QListView::item  { height: 50px;} \
                            QListView::item:selected {border: none; color: #fff;} \
                            QListView::item:hover {border-radius: 5px; border: none; background-color: rgba(0, 0, 0, 100);} \
                            QScrollBar:vertical {border: none; background-color: rgba(0, 0, 0, 20); width: 6px; } \
@@ -65,6 +65,7 @@ FriendsListWidget::FriendsListWidget(QWidget *parent) :
     m_weId->setMaximumWidth(100);
     m_weId->installEventFilter(this);
     m_weId->setToolTip(tr("User ID"));
+    m_wList->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     connect(m_weId, SIGNAL(returnPressed()), SLOT(idPressed()));
     topLayout->addWidget(m_weId);
 
