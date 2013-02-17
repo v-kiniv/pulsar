@@ -29,6 +29,9 @@
 FriendsList::FriendsList(QObject *parent) :
     QObject(parent)
 {
+    m_bFriendsList = true;
+    m_bRefresh = false;
+
     m_Auth = Auth::instance();
 
     m_Settings = Settings::instance();
@@ -50,6 +53,7 @@ FriendsList::FriendsList(QObject *parent) :
     connect(m_Widget, SIGNAL(itemActivated(QModelIndex)), SLOT(listItemAcivated(QModelIndex)));
     connect(m_Widget, SIGNAL(idChoosed(QString)), SLOT(setId(QString)));
     connect(m_Widget, SIGNAL(refresh()), SLOT(refreshList()));
+    connect(m_Widget, SIGNAL(switchList()), SLOT(onSwitchList()));
 
     if(m_Auth->isAuth())
         load();
@@ -60,10 +64,6 @@ FriendsList::FriendsList(QObject *parent) :
 
 void FriendsList::load()
 {
-    QStringList myId;
-    myId << m_Auth->vkId() << tr("My Library");
-    add(myId);
-
     QString fName = m_AppPath;
     fName += "friends";
 
@@ -145,7 +145,6 @@ void FriendsList::getAvatars()
             m_AvatarI++;
             getAvatars();
         }
-
    }
 }
 
@@ -172,7 +171,13 @@ void FriendsList::parseList(QNetworkReply *reply)
     m_ItemsList.clear();
     m_List.clear();
     m_AvatarsUrls.clear();
+    m_Model->clear();
     m_AvatarI = 0;
+
+    // Add self library
+    QStringList myId;
+    myId << m_Auth->vkId() << tr("My Library");
+    add(myId);
 
     QString content;
     QTextCodec * codec = QTextCodec::codecForName("windows-1251");
@@ -217,7 +222,10 @@ void FriendsList::parseList(QNetworkReply *reply)
 
             i++;
         }
-        getAvatars();
+        if(m_bRefresh) {
+            getAvatars();
+            m_bRefresh = false;
+        }
         save();
     }
     m_Widget->hideLoading();
@@ -226,15 +234,14 @@ void FriendsList::parseList(QNetworkReply *reply)
 void FriendsList::parseGroupsList(QNetworkReply *reply)
 {
     m_ItemsList.clear();
-//    m_List.clear();
+    m_List.clear();
     m_AvatarsUrls.clear();
+    m_Model->clear();
     m_AvatarI = 0;
 
     QString content;
     QTextCodec * codec = QTextCodec::codecForName("windows-1251");
     content = codec->toUnicode(reply->readAll());
-
-    qDebug() << content;
 
     QString data;
     content.replace("\\n", "");
@@ -268,15 +275,18 @@ void FriendsList::parseGroupsList(QNetworkReply *reply)
 
             m_AvatarsUrls << avatarUrl;
 
-            //QStringList entry;
-            //entry << id << name;
+            QStringList entry;
+            entry << id << name;
 
-            //add(entry);
+            add(entry);
 
             i++;
         }
-        getAvatars();
-        save();
+        if(m_bRefresh) {
+            getAvatars();
+            m_bRefresh = false;
+        }
+        //save();
     }
     m_Widget->hideLoading();
 }
@@ -311,17 +321,20 @@ void FriendsList::parseId(QNetworkReply *reply)
 
 void FriendsList::downloadAvatar(QNetworkReply *reply)
 {
-    QString fileName = m_List.at(m_AvatarI-1).at(0) + ".jpg";
-    QFile file(fileName);
-    QDir::setCurrent(m_AppPath + "/avatars");
-    file.open(QIODevice::WriteOnly);
-    file.write(reply->readAll());
-    file.close();
+    if(!m_List.isEmpty()) {
+        int index = m_bFriendsList ? m_AvatarI : m_AvatarI - 1;
+        QString fileName = m_List.at(index).at(0) + ".jpg";
+        QFile file(fileName);
+        QDir::setCurrent(m_AppPath + "/avatars");
+        file.open(QIODevice::WriteOnly);
+        file.write(reply->readAll());
+        file.close();
 
-    m_ItemsList.at(m_AvatarI-1)->setIcon(QIcon(QPixmap(fileName)));
+        m_ItemsList.at(index)->setIcon(QIcon(QPixmap(fileName)));
 
-    if(m_AvatarI < m_AvatarsUrls.size()) {
-        getAvatars();
+        if(m_AvatarI < m_AvatarsUrls.size()) {
+            getAvatars();
+        }
     }
 }
 
@@ -331,7 +344,6 @@ void FriendsList::add(QStringList entry)
     QPixmap pix;
     if(QFile(avatarPath).exists()) {
         pix = QPixmap(avatarPath);
-        //qDebug() << pix.isNull();
     } else {
         pix = QPixmap(":/icons/app_logo_light");
     }
@@ -354,24 +366,16 @@ void FriendsList::add(QStringList entry)
 void FriendsList::search(QString str)
 {
     m_ProxyModel->setFilterFixedString(str);
-//    QList<QStandardItem *> sList = m_Model->findItems(str, Qt::MatchContains);
-//    //qDebug() << sList.at(0)->text();
-//    //m_Model->clear();
-//    m_SearchModel->clear();
-//    for(int i = 0; i < sList.size(); i++) {
-//        m_SearchModel->setItem(i, sList.at(i));
-//        qDebug() << sList.at(i)->text();
-//    }
-//    m_SearchModel->appendColumn(sList);
-
-    //m_Widget->setModel(m_SearchModel);
 }
 
 void FriendsList::listItemAcivated(QModelIndex index)
 {
     QStringList data = m_ProxyModel->data(index, Qt::UserRole + 1).toStringList();
     QString vkid = data.at(0) == "0" ? m_Auth->vkId() : data.at(0);
-    Q_EMIT friendSelected(vkid, "0", data.at(1));
+    if(m_bFriendsList)
+        Q_EMIT friendSelected(vkid, "0", data.at(1));
+    else
+        Q_EMIT friendSelected("0", vkid, data.at(1));
     m_Widget->hide();
     m_Widget->clear();
 }
@@ -385,12 +389,22 @@ void FriendsList::setId(QString id)
 
 void FriendsList::refreshList()
 {
-    m_Model->clear();
+    m_bRefresh = true;
+    if(m_bFriendsList) {
+        getList();
+    } else {
+        getGroupsList();
+    }
+}
 
-    QStringList myId;
-    myId << m_Auth->vkId() << tr("My Library");
-    add(myId);
+void FriendsList::onSwitchList()
+{
+    if(m_bFriendsList) {
+        m_bFriendsList = false;
+        getGroupsList();
 
-//    getList();
-    getGroupsList();
+    } else {
+        m_bFriendsList = true;
+        getList();
+    }
 }

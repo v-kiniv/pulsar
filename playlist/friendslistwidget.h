@@ -44,6 +44,9 @@ private:
     QLineEdit *m_weId;
     QPushButton *m_wbRefresh;
     StyledButton *m_wbClose;
+    StyledButton *m_wbListSwitch;
+
+    bool m_bFriendsList;
 
     // Label show animated loading gif
     QLabel *m_wlLoading;
@@ -62,6 +65,7 @@ Q_SIGNALS:
     void itemActivated(QModelIndex);
     void idChoosed(QString);
     void refresh();
+    void switchList();
 
 public Q_SLOTS:
     void showLoading();
@@ -69,6 +73,7 @@ public Q_SLOTS:
 
 private Q_SLOTS:
     void idPressed();
+    void onSwitchList();
 
 
 };

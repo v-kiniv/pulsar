@@ -49,6 +49,9 @@ private:
     int m_AvatarI;
     QSortFilterProxyModel *m_ProxyModel;
 
+    bool m_bFriendsList;
+    bool m_bRefresh;
+
     Settings *m_Settings;
 
     void getList();
@@ -74,6 +77,7 @@ private Q_SLOTS:
     void listItemAcivated(QModelIndex);
     void setId(QString);
     void refreshList();
+    void onSwitchList();
 
 
 };

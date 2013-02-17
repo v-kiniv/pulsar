@@ -113,8 +113,7 @@
 <context>
     <name>FriendsList</name>
     <message>
-        <location filename="../playlist/friendslist.cpp" line="64"/>
-        <location filename="../playlist/friendslist.cpp" line="313"/>
+        <location filename="../playlist/friendslist.cpp" line="179"/>
         <source>My Library</source>
         <translation>Моя библиотека</translation>
     </message>
@@ -122,24 +121,34 @@
 <context>
     <name>FriendsListWidget</name>
     <message>
-        <location filename="../playlist/friendslistwidget.cpp" line="41"/>
+        <location filename="../playlist/friendslistwidget.cpp" line="43"/>
         <source>Search...</source>
         <translation>Поиск</translation>
     </message>
     <message>
-        <location filename="../playlist/friendslistwidget.cpp" line="67"/>
+        <location filename="../playlist/friendslistwidget.cpp" line="69"/>
         <source>User ID</source>
         <translation>ID юзера</translation>
     </message>
     <message>
-        <location filename="../playlist/friendslistwidget.cpp" line="71"/>
+        <location filename="../playlist/friendslistwidget.cpp" line="74"/>
         <source>Refresh</source>
         <translation>Обновить</translation>
     </message>
     <message>
-        <location filename="../playlist/friendslistwidget.cpp" line="79"/>
+        <location filename="../playlist/friendslistwidget.cpp" line="82"/>
+        <location filename="../playlist/friendslistwidget.cpp" line="196"/>
+        <source>Groups</source>
+        <translation>Группы</translation>
+    </message>
+    <message>
+        <location filename="../playlist/friendslistwidget.cpp" line="193"/>
+        <source>Friends</source>
+        <translation>Друзья</translation>
+    </message>
+    <message>
         <source>Close</source>
-        <translation>Закрыть</translation>
+        <translation type="obsolete">Закрыть</translation>
     </message>
 </context>
 <context>
@@ -235,12 +244,12 @@
         <translation>Трек</translation>
     </message>
     <message>
-        <location filename="../playlist/playlist.cpp" line="489"/>
+        <location filename="../playlist/playlist.cpp" line="490"/>
         <source>Deleting track</source>
         <translation>Удаление трека</translation>
     </message>
     <message>
-        <location filename="../playlist/playlist.cpp" line="490"/>
+        <location filename="../playlist/playlist.cpp" line="491"/>
         <source>Delete track from your online library too?</source>
         <translation>Также удалить трек из вашей онлайн библиотеки?</translation>
     </message>
@@ -286,28 +295,28 @@
 <context>
     <name>PlistsGroup</name>
     <message>
-        <location filename="../playlist/plistsgroup.cpp" line="88"/>
-        <location filename="../playlist/plistsgroup.cpp" line="212"/>
+        <location filename="../playlist/plistsgroup.cpp" line="89"/>
+        <location filename="../playlist/plistsgroup.cpp" line="213"/>
         <source>Search</source>
         <translation>Поиск</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroup.cpp" line="92"/>
+        <location filename="../playlist/plistsgroup.cpp" line="93"/>
         <source>Library</source>
         <translation>Библиотека</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroup.cpp" line="96"/>
+        <location filename="../playlist/plistsgroup.cpp" line="97"/>
         <source>Local</source>
         <translation>Локальный</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroup.cpp" line="100"/>
+        <location filename="../playlist/plistsgroup.cpp" line="101"/>
         <source>Suggestions</source>
         <translation>Рекомендации</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroup.cpp" line="104"/>
+        <location filename="../playlist/plistsgroup.cpp" line="105"/>
         <source>Discography</source>
         <translation>Дискография</translation>
     </message>
@@ -315,37 +324,37 @@
 <context>
     <name>PlistsGroupWidget</name>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="116"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="132"/>
         <source>Rename playlist</source>
         <translation>Переименовать плейлист</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="117"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="133"/>
         <source>New title:</source>
         <translation>Новое название:</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="162"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="180"/>
         <source>Search</source>
         <translation>Поиск</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="166"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="184"/>
         <source>Library</source>
         <translation>Библиотека</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="169"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="187"/>
         <source>Local</source>
         <translation>Локальный</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="172"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="190"/>
         <source>Suggestions</source>
         <translation>Рекомендации</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="175"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="193"/>
         <source>Discography</source>
         <translation>Дискография</translation>
     </message>
@@ -368,12 +377,12 @@
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../ui/pulsar.cpp" line="301"/>
+        <location filename="../ui/pulsar.cpp" line="294"/>
         <source>Can&apos;t authenticate: bad login or password.</source>
         <translation>Не удается авторизироваться: неправильный логин или пароль.</translation>
     </message>
     <message>
-        <location filename="../ui/pulsar.cpp" line="304"/>
+        <location filename="../ui/pulsar.cpp" line="297"/>
         <source>Can&apos;t authenticate: network error.</source>
         <translation>Не удается авторизироваться: ошибка сети.</translation>
     </message>

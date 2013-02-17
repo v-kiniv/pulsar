@@ -33,6 +33,8 @@ FriendsListWidget::FriendsListWidget(QWidget *parent) :
 
     hide();
 
+    m_bFriendsList = true;
+
     QVBoxLayout *layout = new QVBoxLayout(this);
     QHBoxLayout *topLayout = new QHBoxLayout();
 
@@ -75,13 +77,24 @@ FriendsListWidget::FriendsListWidget(QWidget *parent) :
                                   QPushButton:hover { background-color: rgba(50, 150, 255, 150);} \
                                  ");
     connect(m_wbRefresh, SIGNAL(clicked()), SIGNAL(refresh()));
+
+
+    m_wbListSwitch = new StyledButton(tr("Groups"), this);
+    m_wbListSwitch->setStyleSheet("QPushButton { padding-left: 5px; padding-right: 5px; border-radius: 2px; background-color: rgba(55, 55, 55, 150); color: #fff; } \
+                                 QPushButton:hover { background-color: rgba(50, 150, 255, 150);}");
+    m_wbListSwitch->setMinimumWidth(70);
+    connect(m_wbListSwitch, SIGNAL(clicked()), SIGNAL(switchList()));
+    connect(m_wbListSwitch, SIGNAL(clicked()), SLOT(onSwitchList()));
+    topLayout->addWidget(m_wbListSwitch);
     topLayout->addWidget(m_wbRefresh);
 
-    m_wbClose = new StyledButton(tr("Close"), this);
+    m_wbClose = new StyledButton("", this);
     m_wbClose->setStyleSheet("QPushButton { padding-left: 5px; padding-right: 5px; border-radius: 2px; background-color: rgba(55, 55, 55, 150); color: #fff; } \
                                  QPushButton:hover { background-color: rgba(50, 150, 255, 150);} \
                                 ");
-    m_wbClose->setMinimumWidth(50);
+    m_wbClose->setFixedSize(16,16);
+    m_wbClose->setIcon(QIcon(":/icons/close"));
+    m_wbClose->setIconSize(QSize(16,16));
     connect(m_wbClose, SIGNAL(clicked()), SLOT(hide()));
     topLayout->addWidget(m_wbClose);
 
@@ -172,5 +185,16 @@ void FriendsListWidget::hideLoading()
 void FriendsListWidget::idPressed()
 {
     Q_EMIT idChoosed(m_weId->text());
+}
+
+void FriendsListWidget::onSwitchList()
+{
+    if(m_bFriendsList) {
+        m_wbListSwitch->setText(tr("Friends"));
+        m_bFriendsList = false;
+    } else {
+        m_wbListSwitch->setText(tr("Groups"));
+        m_bFriendsList = true;
+    }
 }
 
