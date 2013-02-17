@@ -163,11 +163,16 @@ void PlistsGroupWidget::tabsResized()
 
     if(tabXs < width() - 90) {
         addTabBtn->setGeometry(tabX+8, tabY, tabH, tabH);
+
+        m_listsBtn->setGeometry(addTabBtn->x()+20, tabY, tabH, tabH);
+        addTabBtn->setGeometry(addTabBtn->x(), tabY, tabH, tabH);
     } else {
         addTabBtn->setGeometry(m_tabWidget->width() - 30, tabY, tabH, tabH);
+
+        m_listsBtn->setGeometry(addTabBtn->x(), tabY, tabH, tabH);
+        addTabBtn->setGeometry(addTabBtn->x() - 20, tabY, tabH, tabH);
     }
-    m_listsBtn->setGeometry(addTabBtn->x(), tabY, tabH, tabH);
-    addTabBtn->setGeometry(addTabBtn->x() - 20, tabY, tabH, tabH);
+
 
     if(m_bResizeTabs)
         m_tabWidget->tabBar()->setMaximumWidth(m_tabWidget->width() - 35);

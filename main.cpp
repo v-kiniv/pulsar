@@ -32,10 +32,10 @@ int main(int argc, char *argv[])
     // Check if instance of app is exists
     QLocalSocket socket;
     socket.connectToServer("945479168ffc177a8e968dd26eff61ce");
-    if (socket.waitForConnected(500)) {
-        qDebug() << "Already running instance of Pulsar. Exit." ;
-        return 0; // Exit already a process running
-    }
+//    if (socket.waitForConnected(500)) {
+//        qDebug() << "Already running instance of Pulsar. Exit." ;
+//        return 0; // Exit already a process running
+//    }
     ////
 
     QGst::init(&argc, &argv);
