@@ -35,15 +35,15 @@ private:
     QUrl m_url;
     QString m_sService;
     
-signals:
+Q_SIGNALS:
     void authCompleted();
     void authCanceled();
     
-public slots:
+public Q_SLOTS:
     void requireAuth(const QString &service, const QString &url);
     void onSuccess(bool);
 
-private slots:
+private Q_SLOTS:
     void doAuth();
     
 };

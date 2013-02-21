@@ -469,7 +469,7 @@ void Playlist::setContentTitle(QString strTitle)
 void Playlist::removeTrack(QList<Track *> plist)
 {
     // Remove track from model and list of track pointers
-    foreach(Track *p, plist) {
+    Q_FOREACH(Track *p, plist) {
         m_Model->removeRow(m_tList.indexOf(p));
         p->deleteLater();
         m_tList.removeAt(m_tList.indexOf(p));
@@ -562,7 +562,7 @@ void Playlist::removeTrack()
     //QModelIndex index = m_listWidget->treeList()->currentIndex();
     QModelIndexList indexes = m_listWidget->treeList()->selectionModel()->selectedRows();
     QList<Track*> plist;
-    foreach(QModelIndex index, indexes) {
+    Q_FOREACH(QModelIndex index, indexes) {
         if(index.isValid()) {
 
             // Get track pointer from ModelIndex
@@ -577,7 +577,7 @@ void Playlist::removeTrack()
 void Playlist::addToLocal()
 {
     QModelIndexList indexes = m_listWidget->treeList()->selectionModel()->selectedRows();
-    foreach(QModelIndex index, indexes) {
+    Q_FOREACH(QModelIndex index, indexes) {
         if(index.isValid()) {
 
             // Selected Track pointer
@@ -603,7 +603,7 @@ void Playlist::addToLibrary()
 {
     //QModelIndex index = m_listWidget->treeList()->currentIndex();
     QModelIndexList indexes = m_listWidget->treeList()->selectionModel()->selectedRows();
-    foreach(QModelIndex index, indexes) {
+    Q_FOREACH(QModelIndex index, indexes) {
         if(index.isValid()) {
 
             // Selected Track pointer
@@ -617,7 +617,7 @@ void Playlist::addToLibrary()
 void Playlist::addToQueue()
 {
     QModelIndexList indexes = m_listWidget->treeList()->selectionModel()->selectedRows();
-    foreach(QModelIndex index, indexes) {
+    Q_FOREACH(QModelIndex index, indexes) {
         if(index.isValid()) {
 
             // Selected Track pointer
@@ -631,7 +631,7 @@ void Playlist::addToQueue()
 void Playlist::downloadTrack()
 {
     QModelIndexList indexes = m_listWidget->treeList()->selectionModel()->selectedRows();
-    foreach(QModelIndex index, indexes) {
+    Q_FOREACH(QModelIndex index, indexes) {
         if(index.isValid()) {
 
             // Selected Track pointer

@@ -403,7 +403,7 @@ void SettingsDialog::setupShortcuts()
     m_shortcutList << shortcut;
 
 
-    foreach (shortcut, m_shortcutList) {
+    Q_FOREACH (shortcut, m_shortcutList) {
         QList<QStandardItem *> items;
 
         QStandardItem *label = new QStandardItem(shortcut["label"].toString());

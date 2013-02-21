@@ -19,16 +19,11 @@ protected:
     QVBoxLayout *m_Layout;
     QLabel *m_wlTitle;
     
-signals:
-    
-public slots:
+public Q_SLOTS:
     void show();
 
-private slots:
+private Q_SLOTS:
     void parentResized(QRect);
-
-protected slots:
-
 };
 
 #endif // STYLEDWIDGET_H
