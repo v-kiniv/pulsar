@@ -61,7 +61,7 @@ void DownloadManager::download(Track *track)
     connect(m_nReply, SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onNetworkError(QNetworkReply::NetworkError)));
 
     // Create&open file
-    QString fileName = track->artist() + " - " + track->title() + ".mp3";
+    QString fileName = track->artist() + " - " + track->title().trimmed() + ".mp3";
     fileName.replace(QRegExp("[?*/\"<>]"), "_");
     QDir::setCurrent(Settings::instance()->getValue("general/music_path").toString());
     m_file.setFileName(fileName);
