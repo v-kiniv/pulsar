@@ -172,7 +172,7 @@ void PlistsGroupWidget::tabsResized()
     if(tabY < addTabBtn->pos().y())
         tabY = addTabBtn->pos().y();
 
-    if(tabXs < width() - 90) {
+    if(tabXs < width() - 150) {
         addTabBtn->setGeometry(tabX+8, tabY, tabH, tabH);
 
         m_listsBtn->setGeometry(addTabBtn->x()+20, tabY, tabH, tabH);
