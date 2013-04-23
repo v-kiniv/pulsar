@@ -324,37 +324,37 @@
 <context>
     <name>PlistsGroupWidget</name>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="132"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="143"/>
         <source>Rename playlist</source>
         <translation>Перейменування плейлісту</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="133"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="144"/>
         <source>New title:</source>
         <translation>Нова назва:</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="180"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="196"/>
         <source>Search</source>
         <translation>Пошук</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="184"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="200"/>
         <source>Library</source>
         <translation>Бібліотека</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="187"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="203"/>
         <source>Local</source>
         <translation>Локальний</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="190"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="206"/>
         <source>Suggestions</source>
         <translation>Рекомендації</translation>
     </message>
     <message>
-        <location filename="../playlist/plistsgroupwidget.cpp" line="193"/>
+        <location filename="../playlist/plistsgroupwidget.cpp" line="209"/>
         <source>Discography</source>
         <translation>Дискографія</translation>
     </message>
@@ -395,12 +395,12 @@
         <translation>Налаштування</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="94"/>
+        <location filename="../settings/settingsdialog.cpp" line="95"/>
         <source>General</source>
         <translation>Основні</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="95"/>
+        <location filename="../settings/settingsdialog.cpp" line="96"/>
         <source>Playlist</source>
         <translation>Плейліст</translation>
     </message>
@@ -409,127 +409,127 @@
         <translation type="obsolete">Мережа</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="97"/>
+        <location filename="../settings/settingsdialog.cpp" line="98"/>
         <source>Playing</source>
         <translation>Програвання</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="98"/>
+        <location filename="../settings/settingsdialog.cpp" line="99"/>
         <source>Window</source>
         <translation>Вікно</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="118"/>
+        <location filename="../settings/settingsdialog.cpp" line="119"/>
         <source>&amp;OK</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="124"/>
+        <location filename="../settings/settingsdialog.cpp" line="125"/>
         <source>Ca&amp;ncel</source>
         <translation>&amp;Скасувати</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="160"/>
+        <location filename="../settings/settingsdialog.cpp" line="161"/>
         <source>VK Account</source>
         <translation>Аккаунт ВК</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="163"/>
+        <location filename="../settings/settingsdialog.cpp" line="164"/>
         <source>Use own account</source>
         <translation>Використовувати власний аккаунт</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="177"/>
+        <location filename="../settings/settingsdialog.cpp" line="178"/>
         <source>&amp;Login</source>
         <translation>Логін</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="180"/>
+        <location filename="../settings/settingsdialog.cpp" line="181"/>
         <source>&amp;Password</source>
         <translation>Пароль</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="189"/>
+        <location filename="../settings/settingsdialog.cpp" line="190"/>
         <source>&lt;b&gt;Note:&lt;/b&gt; To use all the features and types of playlists, select your own account.</source>
         <translation>&lt;b&gt;Примітка:&lt;/b&gt;Для того, щоб, використувати всі можливості та типи плейлістів, використовуйте власний аккаунт.</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="203"/>
+        <location filename="../settings/settingsdialog.cpp" line="204"/>
         <source>Music folder</source>
         <translation>Папка для музики</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="206"/>
+        <location filename="../settings/settingsdialog.cpp" line="207"/>
         <source>Choose</source>
         <translation>Вибрати</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="208"/>
+        <location filename="../settings/settingsdialog.cpp" line="209"/>
         <source>Path to directory where application saves the music</source>
         <translation>Шлях до директорії де програма зберігає музику</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="219"/>
+        <location filename="../settings/settingsdialog.cpp" line="220"/>
         <source>Others</source>
         <translation>Інші</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="223"/>
+        <location filename="../settings/settingsdialog.cpp" line="224"/>
         <source>Auto</source>
         <translation>Автоматично</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="226"/>
+        <location filename="../settings/settingsdialog.cpp" line="227"/>
         <source>Russian</source>
         <translation>Російська</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="225"/>
+        <location filename="../settings/settingsdialog.cpp" line="226"/>
         <source>Ukrainian</source>
         <translation>Українська</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="96"/>
+        <location filename="../settings/settingsdialog.cpp" line="97"/>
         <source>Shortcuts</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="224"/>
+        <location filename="../settings/settingsdialog.cpp" line="225"/>
         <source>English</source>
         <translation>Англійська</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="228"/>
+        <location filename="../settings/settingsdialog.cpp" line="229"/>
         <source>&amp;Language</source>
         <translation>Мова</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="244"/>
+        <location filename="../settings/settingsdialog.cpp" line="245"/>
         <source>Playlist tabs</source>
         <translation>Вкладки плейлістів</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="247"/>
+        <location filename="../settings/settingsdialog.cpp" line="248"/>
         <source>Title by type</source>
         <translation>Назва за типом</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="248"/>
+        <location filename="../settings/settingsdialog.cpp" line="249"/>
         <source>Title by content</source>
         <translation>Назва за контентом</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="255"/>
+        <location filename="../settings/settingsdialog.cpp" line="256"/>
         <source>Library playlist</source>
         <translation>Плейліст бібліотека</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="259"/>
+        <location filename="../settings/settingsdialog.cpp" line="260"/>
         <source>Load your library</source>
         <translation>Завантажити Вашу бібліотеку</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="260"/>
+        <location filename="../settings/settingsdialog.cpp" line="261"/>
         <source>Load your library on create Library playlist</source>
         <translation>Завантажувати Вашу бібліотеку при створенні плейлісту</translation>
     </message>
@@ -546,112 +546,117 @@
         <translation type="obsolete">Прямий режим</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="298"/>
+        <location filename="../settings/settingsdialog.cpp" line="294"/>
+        <source>When new shortcut was set - press &lt;b&gt;ENTER&lt;/b&gt; to save it.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../settings/settingsdialog.cpp" line="302"/>
         <source>Behavior</source>
         <translation>Поведінка</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="301"/>
+        <location filename="../settings/settingsdialog.cpp" line="305"/>
         <source>Resume playing on start</source>
         <translation>Продовжити програвання при запуску</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="302"/>
+        <location filename="../settings/settingsdialog.cpp" line="306"/>
         <source>Play last track from previous session, when application is starting</source>
         <translation>Програвати останній трек з попередньої сесії при запуску програми</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="318"/>
+        <location filename="../settings/settingsdialog.cpp" line="322"/>
         <source>Main Window</source>
         <translation>Головне вікно</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="321"/>
+        <location filename="../settings/settingsdialog.cpp" line="325"/>
         <source>Quit when closed</source>
         <translation>Вихід при закритті</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="322"/>
+        <location filename="../settings/settingsdialog.cpp" line="326"/>
         <source>Quit from application when main window closes</source>
         <translation>Виходити з програми коли головне вікно закривається</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="330"/>
+        <location filename="../settings/settingsdialog.cpp" line="334"/>
         <source>Tray</source>
         <translation>Трей</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="333"/>
+        <location filename="../settings/settingsdialog.cpp" line="337"/>
         <source>Hide tray icon</source>
         <translation>Не показувати іконку в треї </translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="351"/>
+        <location filename="../settings/settingsdialog.cpp" line="355"/>
         <source>Action</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="351"/>
+        <location filename="../settings/settingsdialog.cpp" line="355"/>
         <source>Local</source>
         <translation type="unfinished">Локальний</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="351"/>
+        <location filename="../settings/settingsdialog.cpp" line="355"/>
         <source>Global</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="357"/>
+        <location filename="../settings/settingsdialog.cpp" line="361"/>
         <source>Play/Pause</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="363"/>
+        <location filename="../settings/settingsdialog.cpp" line="367"/>
         <source>Next track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="369"/>
+        <location filename="../settings/settingsdialog.cpp" line="373"/>
         <source>Previous track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="375"/>
+        <location filename="../settings/settingsdialog.cpp" line="379"/>
         <source>Shuffle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="381"/>
+        <location filename="../settings/settingsdialog.cpp" line="385"/>
         <source>Repeat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="387"/>
+        <location filename="../settings/settingsdialog.cpp" line="391"/>
         <source>Show window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="393"/>
+        <location filename="../settings/settingsdialog.cpp" line="397"/>
         <source>Add current track to Library</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="399"/>
+        <location filename="../settings/settingsdialog.cpp" line="403"/>
         <source>Download current track</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="432"/>
+        <location filename="../settings/settingsdialog.cpp" line="436"/>
         <source>Choose Directory</source>
         <translation>Вибір директорії</translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="473"/>
+        <location filename="../settings/settingsdialog.cpp" line="477"/>
         <source>Pulsar</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../settings/settingsdialog.cpp" line="473"/>
+        <location filename="../settings/settingsdialog.cpp" line="477"/>
         <source>Restart application for apply changes.</source>
         <translation>Перезапустіть програму для застостосування змін.</translation>
     </message>

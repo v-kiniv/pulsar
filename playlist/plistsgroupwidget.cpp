@@ -36,6 +36,16 @@ QTabBar* TabWidget::tabBar() const
     return QTabWidget::tabBar();
 }
 
+AdvancedAction::AdvancedAction(const QString &text, QObject *parent) :
+    QAction(text, parent) {
+
+}
+
+void AdvancedAction::onSetText(const QString &text) {
+    setText(text);
+}
+
+
 PlistsGroupWidget::PlistsGroupWidget(QWidget *parent) :
     QWidget(parent)
 {
@@ -85,8 +95,9 @@ void PlistsGroupWidget::addList(Playlist *plist, bool bManually)
     if(bManually)
         QTimer::singleShot(10, this, SLOT(setCurrentTab()));
 
-    QAction *action = new QAction(plist->listTitle(), this);
+    AdvancedAction *action = new AdvancedAction(plist->listTitle(), this);
     action->setData(m_tabWidget->currentIndex());
+    connect(plist, SIGNAL(titleChanged(QString)), action, SLOT(onSetText(QString)));
     m_listsMenu->addAction(action);
 
     connect(action, SIGNAL(triggered()), SLOT(onTabsListSelected()));
@@ -175,7 +186,7 @@ void PlistsGroupWidget::tabsResized()
 
 
     if(m_bResizeTabs)
-        m_tabWidget->tabBar()->setMaximumWidth(m_tabWidget->width() - 35);
+        m_tabWidget->tabBar()->setMaximumWidth(m_tabWidget->width() - 55);
 }
 
 void PlistsGroupWidget::createMenus()

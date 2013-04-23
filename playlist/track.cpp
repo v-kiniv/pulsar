@@ -211,13 +211,11 @@ void Track::setAvailable(bool s)
 {
     if(s) {
         for(int i=0; i<5; i++) {
-            //m_iTrack.at(i)->setEnabled(true);
-            m_iTrack.at(i)->setForeground(QBrush(QColor("#000")));
+            m_iTrack.at(i)->setEnabled(true);
         }
     } else {
         for(int i=0; i<5; i++) {
-            //m_iTrack.at(i)->setEnabled(false);
-            m_iTrack.at(i)->setForeground(QBrush(QColor("#a0a0a0")));
+            m_iTrack.at(i)->setEnabled(false);
         }
     }
 }

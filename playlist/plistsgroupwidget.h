@@ -34,6 +34,16 @@ public:
     QTabBar *tabBar() const;
 };
 
+class AdvancedAction : public QAction
+{
+    Q_OBJECT
+public:
+    explicit AdvancedAction(const QString &text, QObject* parent);
+
+public Q_SLOTS:
+    void onSetText(const QString &text);
+};
+
 class PlistsGroupWidget : public QWidget
 {
     Q_OBJECT

@@ -16,7 +16,7 @@ AuthWindow::AuthWindow(QWidget *parent) :
 
 void AuthWindow::setupUi()
 {
-    setFixedSize(350, 250);
+//    setFixedSize(350, 250);
 
     QVBoxLayout *mLayout = new QVBoxLayout();
     setLayout(mLayout);

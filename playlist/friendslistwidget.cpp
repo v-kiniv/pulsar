@@ -29,7 +29,7 @@ FriendsListWidget::FriendsListWidget(QWidget *parent) :
 
     setStyleSheet("QLineEdit { border-radius: 2px; background-color: rgba(55, 55, 55, 210); color: #fff; } QWidget#friendsWidget {padding-right: 90px; border-radius: 7px; background-color: rgba(55, 55, 55, 210); color: #fff; font-size: 15px;}");
 
-    setMaximumSize(QSize(420, 320));
+//    setMaximumSize(QSize(420, 320));
 
     hide();
 

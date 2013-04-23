@@ -80,11 +80,12 @@ void SettingsDialog::setupUi()
 {
     setWindowTitle(tr("Settings"));
 
-    setFixedSize(600,500);
+    // Bad idea set fixed size for settings dialog, but leave it here
+    //    setFixedSize(600,500);
+
     setWindowModality(Qt::WindowModal);
 
     // Pages list
-
     m_wPagesList = new QListWidget(this);
     m_wPagesList->setMinimumWidth(150);
     m_wPagesList->setIconSize(QSize(48, 48));
@@ -288,6 +289,9 @@ void SettingsDialog::setupPages()
 
 
     lpScuts->addWidget(m_wtShortcuts);
+
+//    QLabel *wlLanguage = new QLabel(tr("&Language"));
+    lpScuts->addWidget(new QLabel(tr("When new shortcut was set - press <b>ENTER</b> to save it.")));
 
     m_pageWidgets << wpScuts;
 
