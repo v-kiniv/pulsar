@@ -13,17 +13,11 @@
         <file alias="settings_general">icons/settings_general.png</file>
         <file alias="settings_list">icons/settings_list.png</file>
         <file alias="settings_net">icons/settings_net.png</file>
-        <file alias="circle_empty">icons/circle_empty.png</file>
-        <file alias="circle_list">icons/circle_list.png</file>
-        <file alias="circle_one">icons/circle_one.png</file>
         <file alias="next">icons/next.png</file>
         <file alias="prev">icons/prev.png</file>
         <file alias="play">icons/play.png</file>
-        <file alias="circle_all">icons/circle_all.png</file>
         <file alias="menu">icons/menu.png</file>
         <file alias="settings_play">icons/settings_play.png</file>
-        <file alias="loudspeaker_light">icons/loudspeaker_light.png</file>
-        <file alias="loudspeaker_light_off">icons/loudspeaker_light_off.png</file>
         <file alias="pulsar">icons/pulsar.png</file>
         <file alias="tab_library">icons/tab_library.png</file>
         <file alias="tab_local">icons/tab_local.png</file>
@@ -44,6 +38,9 @@
         <file alias="vk">icons/vk.png</file>
         <file alias="dropdown_arrow">icons/dropdown_arrow.png</file>
         <file alias="close">icons/close.png</file>
+        <file alias="pause">icons/pause.png</file>
+        <file alias="shuffle">icons/shuffle.png</file>
+        <file alias="repeat">icons/repeat.png</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="bkg_light">images/bkg_light.png</file>

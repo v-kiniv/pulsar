@@ -214,7 +214,10 @@ void PlayerControls::setupButtons(QMenu *appMenu)
     connect(m_wbPrev, SIGNAL(clicked()), SIGNAL(prev()));
 
     // Play
-    m_wbPlay = new StyledButton(QIcon(QPixmap(":icons/play")), "Play");
+    QIcon playIcon;
+    playIcon.addFile(QString::fromUtf8(":/icons/play"), QSize(), QIcon::Active, QIcon::Off);
+    playIcon.addFile(QString::fromUtf8(":/icons/pause"), QSize(), QIcon::Active, QIcon::On);
+    m_wbPlay = new StyledButton(playIcon, "Play");
     m_wbPlay->setFixedHeight(28);
     m_wbPlay->setIconSize(QSize(16, 16));
     m_wbPlay->setCheckable(true);
@@ -228,17 +231,18 @@ void PlayerControls::setupButtons(QMenu *appMenu)
     connect(m_wbNext, SIGNAL(clicked()), SIGNAL(next()));
 
     // Shuffle
-    m_wbShuffle = new StyledButton(QIcon(QPixmap(":icons/circle_empty")), "Shuffle");
+    m_wbShuffle = new StyledButton(QIcon(QPixmap(":icons/shuffle")), "Shuffle");
     m_wbShuffle->setCheckable(true);
-    m_wbShuffle->setFixedHeight(28);
+    m_wbShuffle->setFixedSize(70, 28);
     m_wbShuffle->setIconSize(QSize(16, 16));
+    m_wbShuffle->setLayoutDirection(Qt::LeftToRight);
     setShuffle(Settings::instance()->getValue("player/shuffle").toInt());
     connect(m_wbShuffle, SIGNAL(clicked()), SLOT(setShuffle()));
 
     // Repeat
-    m_wbRepeat = new StyledButton(QIcon(QPixmap(":icons/circle_empty")), "Repeat");
+    m_wbRepeat = new StyledButton(QIcon(QPixmap(":icons/repeat")), "Repeat");
     m_wbRepeat->setCheckable(true);
-    m_wbRepeat->setFixedHeight(28);
+    m_wbRepeat->setFixedSize(70, 28);
     m_wbRepeat->setIconSize(QSize(16, 16));
     setRepeat(Settings::instance()->getValue("player/repeat").toInt());
     connect(m_wbRepeat, SIGNAL(clicked()), SLOT(setRepeat()));
@@ -401,16 +405,16 @@ void PlayerControls::setShuffle(int mode)
 
     switch(m_iShuffleMode) {
     case 1:
-        m_wbShuffle->setIcon(QIcon(QPixmap(":icons/circle_empty")));
+        m_wbShuffle->setText("OFF");
         m_wbShuffle->setChecked(false);
 
         break;
     case 2:
-        m_wbShuffle->setIcon(QIcon(QPixmap(":icons/circle_one")));
+        m_wbShuffle->setText("Tracks");
         m_wbShuffle->setChecked(true);
         break;
     case 3:
-        m_wbShuffle->setIcon(QIcon(QPixmap(":icons/circle_list")));
+        m_wbShuffle->setText("Lists");
         m_wbShuffle->setChecked(true);
         break;
     }
@@ -437,16 +441,16 @@ void PlayerControls::setRepeat(int mode)
 
     switch(m_iRepeatMode) {
     case 1:
-        m_wbRepeat->setIcon(QIcon(QPixmap(":icons/circle_empty")));
+        m_wbRepeat->setText("OFF");
         m_wbRepeat->setChecked(false);
 
         break;
     case 2:
-        m_wbRepeat->setIcon(QIcon(QPixmap(":icons/circle_one")));
+        m_wbRepeat->setText("Track");
         m_wbRepeat->setChecked(true);
         break;
     case 3:
-        m_wbRepeat->setIcon(QIcon(QPixmap(":icons/circle_list")));
+        m_wbRepeat->setText("List");
         m_wbRepeat->setChecked(true);
         break;
     }
