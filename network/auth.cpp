@@ -64,7 +64,7 @@ void Auth::doAuth()
     m_nCookie->clearCookies();
     m_nCookie->setVkLogin(m_sVkLogin);
 
-    QString sRequest = "act=login&q=1&al_frame=1&expire=quick_expire_input&captcha_sid=quick_captcha_sid&captcha_key=quick_captcha_key&from_host=vk.com&email=" + m_sVkLogin + "&pass=" + m_sVkPassword;
+    QString sRequest = "act=login&role=al_frame&expire=quick_expire_input&captcha_sid=quick_captcha_sid&captcha_key=quick_captcha_key&from_host=vk.com&email=" + m_sVkLogin + "&pass=" + m_sVkPassword;
     m_nRequest.setUrl(QUrl("http://login.vk.com/?"+sRequest));
 
     m_nManager->disconnect();
@@ -160,10 +160,6 @@ void Auth::authRFirst(QNetworkReply *nReply)
 void Auth::authRSecond(QNetworkReply *nReply)
 {
     Q_UNUSED(nReply);
-    /*TODO
-      maybe check for correct data received
-      Q_EMIT signal to save cookies to file
-    */
     m_nCookie->saveCookies();
     m_bAuth = true;
     Q_EMIT authComplete();
@@ -187,7 +183,7 @@ void Auth::errorHandle(Auth::Errors error)
 
 void Auth::setVkAccount(QString sLogin, QString sPassword)
 {
-    // Set own user VKontakte accoubnt
+    // Set own user VKontakte account
     m_bVkOwn = true;
     m_sVkLogin = sLogin;
     m_sVkPassword = sPassword;

@@ -40,6 +40,7 @@ private:
 
     Auth *m_Auth;
     QNetworkAccessManager *m_nManager;
+    QNetworkRequest m_nRequest;
 
     Track *m_lastTrack;
     QString m_sLastTitle;

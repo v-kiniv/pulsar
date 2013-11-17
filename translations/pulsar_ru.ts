@@ -18,17 +18,15 @@
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../ui/about.cpp" line="90"/>
         <source>If you like this app, you can donate some money for its development</source>
-        <translation>Если Вам понравилось приложение, Вы можете пожертвовать немного денег на его развитие</translation>
+        <translation type="obsolete">Если Вам понравилось приложение, Вы можете пожертвовать немного денег на его развитие</translation>
+    </message>
+    <message>
+        <source>Donate through PayPal</source>
+        <translation type="obsolete">Пожертвовать через PayPal</translation>
     </message>
     <message>
         <location filename="../ui/about.cpp" line="90"/>
-        <source>Donate through PayPal</source>
-        <translation>Пожертвовать через PayPal</translation>
-    </message>
-    <message>
-        <location filename="../ui/about.cpp" line="99"/>
         <source>The program is provided as is with no warranty of any kind, including the warranty of design, merchantability and fitness for a particular purpose.</source>
         <translation></translation>
     </message>
@@ -54,7 +52,7 @@
     <message>
         <location filename="../ui/authwindow.cpp" line="85"/>
         <source>To integrate with the service &lt;b&gt;%0&lt;/b&gt;, click button &apos;login&apos;, then authorize on website and allow application &lt;b&gt;Pulsar&lt;/b&gt; to use your account on &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt;After you allow application to use your account, close browser and click &lt;b&gt;Next&lt;/b&gt; button.</source>
-        <translation>Для интеграции с сервисом &lt;b&gt;%0&lt;/b&gt;, нажмите кнопку &apos;авторизация&apos;, затем авторизируйтесь на сайте и разрешите приложению &lt;b&gt;Pulsar&lt;/b&gt; использовать Ваш аккаунт на &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt;После того как вы разрешите приложению использовать Ваш аакаунт, закройте браузер и нажмите кнопку &lt;b&gt;Далее&lt;/b.  </translation>
+        <translation>Для интеграции с сервисом &lt;b&gt;%0&lt;/b&gt;, нажмите кнопку &apos;авторизация&apos;, затем авторизируйтесь на сайте и разрешите приложению &lt;b&gt;Pulsar&lt;/b&gt; использовать Ваш аккаунт на &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt;После того как вы разрешите приложению использовать Ваш аккаунт, закройте браузер и нажмите кнопку &lt;b&gt;Далее&lt;/b.</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="86"/>
@@ -74,7 +72,7 @@
     <message>
         <location filename="../ui/authwindow.cpp" line="100"/>
         <source>&lt;b&gt;Pulsar&lt;/b&gt; can&apos;t access to your &lt;b&gt;%0&lt;/b&gt; account, something goes wrong or you&apos;re does not grant access for application on &lt;b&gt;%0&lt;/b&gt; website.&lt;br&gt;&lt;br&gt;Click &lt;b&gt;Retry&lt;/b&gt; button and try again or &lt;b&gt;Cancel&lt;/b&gt; for closing this window.</source>
-        <translation>&lt;b&gt;Pulsar&lt;/b&gt; не смог подключиться к Вашему &lt;b&gt;%0&lt;/b&gt; аккаунту, что-то пошло не так или Вы не предоставили доступ приложению на сайте &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Нажмите кнопку &lt;b&gt;Повтор&lt;/b&gt; и поробуйте снова или &lt;b&gt;Cancel&lt;/b&gt; для того чтобы закрыть это окно.   </translation>
+        <translation>&lt;b&gt;Pulsar&lt;/b&gt; не смог подключиться к Вашему &lt;b&gt;%0&lt;/b&gt; аккаунту, что-то пошло не так или Вы не предоставили доступ приложению на сайте &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt;Нажмите кнопку &lt;b&gt;Повтор&lt;/b&gt; и поробуйте снова или &lt;b&gt;Отмена&lt;/b&gt; для того, чтобы закрыть это окно.   </translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="101"/>
@@ -377,12 +375,12 @@
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../ui/pulsar.cpp" line="294"/>
+        <location filename="../ui/pulsar.cpp" line="293"/>
         <source>Can&apos;t authenticate: bad login or password.</source>
         <translation>Не удается авторизироваться: неправильный логин или пароль.</translation>
     </message>
     <message>
-        <location filename="../ui/pulsar.cpp" line="297"/>
+        <location filename="../ui/pulsar.cpp" line="296"/>
         <source>Can&apos;t authenticate: network error.</source>
         <translation>Не удается авторизироваться: ошибка сети.</translation>
     </message>
@@ -686,42 +684,48 @@
 <context>
     <name>VkActions</name>
     <message>
-        <location filename="../network/vkactions.cpp" line="97"/>
+        <location filename="../network/vkactions.cpp" line="100"/>
         <source>Added to Library</source>
         <translation>Добавлено в библиотеку</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="97"/>
+        <location filename="../network/vkactions.cpp" line="100"/>
         <source>Track &apos;&lt;b&gt;%0&lt;/b&gt;&apos; added to library. Refresh your library list to see the new tracks.</source>
         <translation>Трек &apos;&lt;b&gt;%0&lt;/b&gt;&apos; добавлен в библиотеку. Обновите Вашу библиотеку, чтобы увидеть новые треки.</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="99"/>
+        <location filename="../network/vkactions.cpp" line="102"/>
+        <location filename="../network/vkactions.cpp" line="113"/>
         <source>Unknown Error</source>
         <translation>Неизвестная ошибка</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="99"/>
+        <location filename="../network/vkactions.cpp" line="102"/>
         <source>Can&apos;t add Track to library.</source>
         <translation>Невозможно добавить трек в библиотеку.</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="108"/>
+        <location filename="../network/vkactions.cpp" line="111"/>
         <source>Removed from Library</source>
         <translation>Удален из библиотеки</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="108"/>
+        <location filename="../network/vkactions.cpp" line="111"/>
         <source>Track &apos;&lt;b&gt;%0&lt;/b&gt;&apos; removed from library.</source>
         <translation>Трек &apos;&lt;b&gt;%0&lt;/b&gt;&apos;  удален из библиотеки.</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="119"/>
+        <location filename="../network/vkactions.cpp" line="113"/>
+        <source>Can&apos;t remove Track from library.</source>
+        <translation>Невозможно удалить трек из библиотеки</translation>
+    </message>
+    <message>
+        <location filename="../network/vkactions.cpp" line="122"/>
         <source>Error</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="119"/>
+        <location filename="../network/vkactions.cpp" line="122"/>
         <source>Can&apos;t add Track to library. Track can not be founded on server.</source>
         <translation>Невозможно добавить трек в библиотеку. Трек не найден на сервере.</translation>
     </message>

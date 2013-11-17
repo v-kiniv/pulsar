@@ -27,14 +27,14 @@ int main(int argc, char *argv[])
 //    QApplication::setStyle(new QWindowsStyle);
     QApplication a(argc, argv);
     a.setApplicationName("Pulsar");
-    a.setApplicationVersion("0.9.2.8 beta");
+    a.setApplicationVersion("0.9.2.9 beta");
 
     // Check if instance of app is exists
     QLocalSocket socket;
     socket.connectToServer("945479168ffc177a8e968dd26eff61ce");
     if (socket.waitForConnected(500)) {
-//        qDebug() << "Already running instance of Pulsar. Exit." ;
-//        return 0; // Exit already a process running
+        qDebug() << "Already running instance of Pulsar. Exit." ;
+        return 0; // Exit already a process running
     }
     ////
 

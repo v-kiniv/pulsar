@@ -25,13 +25,11 @@ StyledWidget::StyledWidget(QWidget *parent) :
     m_wlTitle->setStyleSheet("background-color: rgba(30, 30, 30, 120); color: #DDDDDD; border-radius: 2px; padding-top: 1px; padding-bottom: 1px;");
     m_Layout->addWidget(m_wlTitle, 0);
     m_wlTitle->hide();
-    //m_Layout->setAlignment(m_wlTitle,  Qt::AlignTop|Qt::AlignHCenter);
 }
 
 void StyledWidget::setLayout(QLayout *l)
 {
     m_Layout->addLayout(l, 1);
-    //->setAlignment(l, Qt::AlignTop);
 }
 
 void StyledWidget::setTitle(const QString &str)
@@ -58,7 +56,7 @@ void StyledWidget::show()
 void StyledWidget::parentResized(QRect prect)
 {
     QPoint center = prect.center() - rect().center();
-    center.setY(120);
+    center.setY(center.y() - 20);
     move(center);
 }
 

@@ -123,7 +123,6 @@ void Pulsar::createMenus()
     QAction *aboutA = new QAction(tr("About"), this);
     QAction *quitA = new QAction(tr("Quit"), this);
 
-
     connect(settingsA, SIGNAL(triggered()), m_settingsDialog, SLOT(showDialog()));
     connect(aboutA, SIGNAL(triggered()), m_wAbout, SLOT(showDialog()));
     connect(quitA, SIGNAL(triggered()), SLOT(quit()));

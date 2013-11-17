@@ -18,17 +18,15 @@
         <translation>Автор</translation>
     </message>
     <message>
-        <location filename="../ui/about.cpp" line="90"/>
         <source>If you like this app, you can donate some money for its development</source>
-        <translation>Якщо Вам сподобалась програма, Ви можете пожертвувати деякі гроші для її розвитку</translation>
+        <translation type="obsolete">Якщо Вам сподобалась програма, Ви можете пожертвувати деякі гроші для її розвитку</translation>
+    </message>
+    <message>
+        <source>Donate through PayPal</source>
+        <translation type="obsolete">Пожертвувати через PayPal</translation>
     </message>
     <message>
         <location filename="../ui/about.cpp" line="90"/>
-        <source>Donate through PayPal</source>
-        <translation>Пожертвувати через PayPal</translation>
-    </message>
-    <message>
-        <location filename="../ui/about.cpp" line="99"/>
         <source>The program is provided as is with no warranty of any kind, including the warranty of design, merchantability and fitness for a particular purpose.</source>
         <translation></translation>
     </message>
@@ -38,48 +36,48 @@
     <message>
         <location filename="../ui/authwindow.cpp" line="12"/>
         <source>Authorization required</source>
-        <translation type="unfinished"></translation>
+        <translation>Необхідна авторизація</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="43"/>
         <source>Cancel</source>
-        <translation type="unfinished">Скасувати</translation>
+        <translation>Скасувати</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="44"/>
         <location filename="../ui/authwindow.cpp" line="59"/>
         <source>Next</source>
-        <translation type="unfinished">Наступний</translation>
+        <translation>Далі</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="85"/>
         <source>To integrate with the service &lt;b&gt;%0&lt;/b&gt;, click button &apos;login&apos;, then authorize on website and allow application &lt;b&gt;Pulsar&lt;/b&gt; to use your account on &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt;After you allow application to use your account, close browser and click &lt;b&gt;Next&lt;/b&gt; button.</source>
-        <translation type="unfinished"></translation>
+        <translation>Для інтеграція з сервісом &lt;b&gt;%0&lt;/b&gt;, натисніть кнопку &apos;авторизація&apos;, потім авторизуйтесь на сайті та дайте дозвіл додатку &lt;b&gt;Pulsar&lt;/b&gt; викуристовувати Ваш аккаунт на &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt; Після того як ви дозволите додатку використовувати Ваш аккаунт, закрийте браузер і натисніть кнопку &lt;b&gt;Далі&lt;/b.</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="86"/>
         <source>Login</source>
-        <translation type="unfinished"></translation>
+        <translation>Авторизація</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="97"/>
         <source>Your %0 account successfully connected to Pulsar.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ваш %0 аккаунт успішно підключений до Pulsar&apos;у.</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="98"/>
         <source>Close</source>
-        <translation type="unfinished">Закрити</translation>
+        <translation>Закрити</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="100"/>
         <source>&lt;b&gt;Pulsar&lt;/b&gt; can&apos;t access to your &lt;b&gt;%0&lt;/b&gt; account, something goes wrong or you&apos;re does not grant access for application on &lt;b&gt;%0&lt;/b&gt; website.&lt;br&gt;&lt;br&gt;Click &lt;b&gt;Retry&lt;/b&gt; button and try again or &lt;b&gt;Cancel&lt;/b&gt; for closing this window.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Pulsar&lt;/b&gt; не зміг підключитись до Вашого &lt;b&gt;%0&lt;/b&gt; аккаунту аккаунту, трапилось щось дивне або Ви не надали доступ додатку на сайті &lt;b&gt;%0&lt;/b&gt;.&lt;br&gt;&lt;br&gt; Натисніть кнопку &lt;b&gt;Повторити&lt;/b&gt; та спробуйте знову або &lt;b&gt;Скасувати&lt;/b&gt; для того, щоб закрити це вікно.</translation>
     </message>
     <message>
         <location filename="../ui/authwindow.cpp" line="101"/>
         <source>Retry</source>
-        <translation type="unfinished"></translation>
+        <translation>Повторити</translation>
     </message>
 </context>
 <context>
@@ -139,12 +137,12 @@
         <location filename="../playlist/friendslistwidget.cpp" line="82"/>
         <location filename="../playlist/friendslistwidget.cpp" line="196"/>
         <source>Groups</source>
-        <translation type="unfinished"></translation>
+        <translation>Групи</translation>
     </message>
     <message>
         <location filename="../playlist/friendslistwidget.cpp" line="193"/>
         <source>Friends</source>
-        <translation type="unfinished"></translation>
+        <translation>Друзі</translation>
     </message>
     <message>
         <source>Close</source>
@@ -156,7 +154,7 @@
     <message>
         <location filename="../playlist/musicdb.cpp" line="74"/>
         <source>Get all albums</source>
-        <translation type="unfinished"></translation>
+        <translation>Всі альбоми</translation>
     </message>
 </context>
 <context>
@@ -178,17 +176,17 @@
         <location filename="../ui/playercontrols.cpp" line="41"/>
         <location filename="../ui/playercontrols.cpp" line="103"/>
         <source>Add to list</source>
-        <translation type="unfinished">Додати до списку</translation>
+        <translation>Додати до списку</translation>
     </message>
     <message>
         <location filename="../ui/playercontrols.cpp" line="98"/>
         <source>Download track</source>
-        <translation type="unfinished"></translation>
+        <translation>Скачати трек</translation>
     </message>
     <message>
         <location filename="../ui/playercontrols.cpp" line="108"/>
         <source>Add to library</source>
-        <translation type="unfinished"></translation>
+        <translation>Додати до бібліотеки</translation>
     </message>
     <message>
         <location filename="../ui/playercontrols.cpp" line="205"/>
@@ -377,12 +375,12 @@
         <translation>Вихід</translation>
     </message>
     <message>
-        <location filename="../ui/pulsar.cpp" line="294"/>
+        <location filename="../ui/pulsar.cpp" line="293"/>
         <source>Can&apos;t authenticate: bad login or password.</source>
         <translation>Неможливо авторизуватись: неправильний логін або пароль.</translation>
     </message>
     <message>
-        <location filename="../ui/pulsar.cpp" line="297"/>
+        <location filename="../ui/pulsar.cpp" line="296"/>
         <source>Can&apos;t authenticate: network error.</source>
         <translation>Неможливо авторизуватись: помилка мережі.</translation>
     </message>
@@ -491,7 +489,7 @@
     <message>
         <location filename="../settings/settingsdialog.cpp" line="97"/>
         <source>Shortcuts</source>
-        <translation type="unfinished"></translation>
+        <translation>Гарячі клавіші</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="225"/>
@@ -548,7 +546,7 @@
     <message>
         <location filename="../settings/settingsdialog.cpp" line="294"/>
         <source>When new shortcut was set - press &lt;b&gt;ENTER&lt;/b&gt; to save it.</source>
-        <translation type="unfinished"></translation>
+        <translation>Після редагування - натисніть &lt;b&gt;ENTER&lt;/b&gt; для збереження змін.</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="302"/>
@@ -593,57 +591,57 @@
     <message>
         <location filename="../settings/settingsdialog.cpp" line="355"/>
         <source>Action</source>
-        <translation type="unfinished"></translation>
+        <translation>Дія</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="355"/>
         <source>Local</source>
-        <translation type="unfinished">Локальний</translation>
+        <translation>Локальна</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="355"/>
         <source>Global</source>
-        <translation type="unfinished"></translation>
+        <translation>Глобальна</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="361"/>
         <source>Play/Pause</source>
-        <translation type="unfinished"></translation>
+        <translation>Грати/Пауза</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="367"/>
         <source>Next track</source>
-        <translation type="unfinished"></translation>
+        <translation>Наступний трек</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="373"/>
         <source>Previous track</source>
-        <translation type="unfinished"></translation>
+        <translation>Попередній трек</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="379"/>
         <source>Shuffle</source>
-        <translation type="unfinished"></translation>
+        <translation>Перемішати</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="385"/>
         <source>Repeat</source>
-        <translation type="unfinished"></translation>
+        <translation>Повтор</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="391"/>
         <source>Show window</source>
-        <translation type="unfinished"></translation>
+        <translation>Показати вікно</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="397"/>
         <source>Add current track to Library</source>
-        <translation type="unfinished"></translation>
+        <translation>Поточний трек в бібліотеку</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="403"/>
         <source>Download current track</source>
-        <translation type="unfinished"></translation>
+        <translation>Скачати поточний трек</translation>
     </message>
     <message>
         <location filename="../settings/settingsdialog.cpp" line="436"/>
@@ -698,42 +696,48 @@
 <context>
     <name>VkActions</name>
     <message>
-        <location filename="../network/vkactions.cpp" line="97"/>
+        <location filename="../network/vkactions.cpp" line="100"/>
         <source>Added to Library</source>
         <translation>Додано до бібліотеки</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="97"/>
+        <location filename="../network/vkactions.cpp" line="100"/>
         <source>Track &apos;&lt;b&gt;%0&lt;/b&gt;&apos; added to library. Refresh your library list to see the new tracks.</source>
         <translation>Трек &apos;&lt;b&gt;%0&lt;/b&gt;&apos; доданий до бібліотеки. Оновіть Вашу бібліотеку, щоб побачити нові треки.</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="99"/>
+        <location filename="../network/vkactions.cpp" line="102"/>
+        <location filename="../network/vkactions.cpp" line="113"/>
         <source>Unknown Error</source>
         <translation>Невідома помилка</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="99"/>
+        <location filename="../network/vkactions.cpp" line="102"/>
         <source>Can&apos;t add Track to library.</source>
         <translation>Неможливо додати трек до бібліотеки.</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="108"/>
+        <location filename="../network/vkactions.cpp" line="111"/>
         <source>Removed from Library</source>
         <translation>Видалено з бібліотеки</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="108"/>
+        <location filename="../network/vkactions.cpp" line="111"/>
         <source>Track &apos;&lt;b&gt;%0&lt;/b&gt;&apos; removed from library.</source>
         <translation>Трек &apos;&lt;b&gt;%0&lt;/b&gt;&apos; видалено з бібліотеки.</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="119"/>
+        <location filename="../network/vkactions.cpp" line="113"/>
+        <source>Can&apos;t remove Track from library.</source>
+        <translation>Неможливо видалити трек з бібліотеки</translation>
+    </message>
+    <message>
+        <location filename="../network/vkactions.cpp" line="122"/>
         <source>Error</source>
         <translation>Помилка</translation>
     </message>
     <message>
-        <location filename="../network/vkactions.cpp" line="119"/>
+        <location filename="../network/vkactions.cpp" line="122"/>
         <source>Can&apos;t add Track to library. Track can not be founded on server.</source>
         <translation>Неможливо додати трек до бібліотеки. Трек неможливо знайти на сервері.</translation>
     </message>

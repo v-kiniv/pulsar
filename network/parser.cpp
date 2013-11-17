@@ -37,7 +37,8 @@ Parser::Parser(QObject *parent) :
 
     m_Auth = Auth::instance();
     m_nManager->setCookieJar(m_Auth->cookiejar());
-    m_nRequest.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko) Chrome/15.0.874.121 Safari/535.2");
+    m_nRequest.setRawHeader("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36");
+    m_nRequest.setRawHeader("Host", "vk.com");
     m_nRequest.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-www-form-urlencoded");
 
     connect(m_Auth, SIGNAL(authComplete()), SLOT(authComplete()));
@@ -104,11 +105,11 @@ void Parser::library(QString id, QString gid)
 {
     m_ReqType = 1;
 
-    QNetworkRequest request = QNetworkRequest(QUrl(QString("http://vk.com/audio?act=load_audios_silent&al=1&edit=0&gid=%1&id=%0").arg(id).arg(gid)));
+    m_nRequest.setUrl(QUrl(QString("http://vk.com/audio?act=load_audios_silent&al=1&gid=%1&id=%0&please_dont_ddos=2").arg(id).arg(gid)));
 
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(libraryReply(QNetworkReply*)));
-    m_nManager->get(request);
+    m_nManager->get(m_nRequest);
 
     Q_EMIT busy();
 }
