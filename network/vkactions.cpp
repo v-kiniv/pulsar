@@ -57,7 +57,11 @@ void VkActions::addToLibrary(Track *track)
         return;
     }
 
-    m_nRequest.setUrl(QUrl("http://vk.com/audio.php?act=add&al=0&gid=0&aid=" + track->aid() + "&oid=" + track->oid() + "&album_id=0&hash="+track->hash()));
+    m_nRequest.setUrl(QUrl(QString("http://vk.com/audio.php?act=add&al=0&gid=0&aid=%0&oid=%1&album_id=0&hash=%2")
+                           .arg(track->aid())
+                           .arg(track->oid())
+                           .arg(track->hash())
+                     ));
 
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(toLibReply(QNetworkReply*)));
@@ -69,7 +73,11 @@ void VkActions::removeFromLibrary(Track *track)
     m_lastTrack = track;
     m_sLastTitle = track->title();
 
-    m_nRequest.setUrl(QUrl("http://vk.com/audio.php?act=delete_audio&al=1&restore=0&gid=0&aid=" + track->aid() + "&oid=" + track->oid() + "&hash="+track->delHash()));
+    m_nRequest.setUrl(QUrl(QString("http://vk.com/audio.php?act=delete_audio&al=1&restore=0&gid=0&aid=%0&oid=%1&hash=%2")
+                           .arg(track->aid())
+                           .arg(track->oid())
+                           .arg(track->delHash())
+                     ));
 
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(fromLibReply(QNetworkReply*)));
@@ -81,13 +89,14 @@ void VkActions::setStatus(Track *track)
     m_lastTrack = track;
 
     if(!m_lastTrack->aid().isEmpty()) {
-        QNetworkRequest request = QNetworkRequest(QUrl("http://vk.com/audio?act=add&oid=" + track->oid() + "&aid=" + track->aid() + "&hash=" + track->hash()));
-
+        m_nRequest.setUrl(QUrl(QString("http://vk.com/audio?act=audio_status&al=1&full_id=%1_%0&hash=%2&top=")
+                               .arg(track->aid())
+                               .arg(track->oid())
+                               .arg(track->hash())
+                         ));
         m_nManager->disconnect();
-        m_nManager->get(request);
+        m_nManager->get(m_nRequest);
     }
-
-
 }
 
 
