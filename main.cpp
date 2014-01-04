@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 //    QApplication::setStyle(new QWindowsStyle);
     QApplication a(argc, argv);
     a.setApplicationName("Pulsar");
-    a.setApplicationVersion("0.9.2.9 beta");
+    a.setApplicationVersion("0.9.2.10 beta");
 
     // Check if instance of app is exists
     QLocalSocket socket;

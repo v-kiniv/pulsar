@@ -29,7 +29,7 @@ public:
     void library(QString id, QString gid = "0");
 
     // Loads user music suggestions
-    void suggestions();
+    void suggestions(int offset = 0);
 
     // Options set
     void setSearchStr(QString strSearch);

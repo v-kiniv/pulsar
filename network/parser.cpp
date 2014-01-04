@@ -114,17 +114,15 @@ void Parser::library(QString id, QString gid)
     Q_EMIT busy();
 }
 
-void Parser::suggestions()
+void Parser::suggestions(int offset)
 {
-    m_iOffset = 0;
-
     m_ReqType = 2;
 
-    QNetworkRequest request = QNetworkRequest(QUrl("http://vk.com/audio?act=get_recommendations&al=1&id="+m_Auth->vkId()+"&offset="+QString::number(m_iOffset)));
+    m_nRequest.setUrl(QUrl(QString("http://vk.com/audio?act=get_recommendations&al=1&id=%0&offset=%1").arg(m_Auth->vkId()).arg(offset)));
 
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(suggestionsReply(QNetworkReply*)));
-    m_nManager->get(request);
+    m_nManager->get(m_nRequest);
 
     Q_EMIT busy();
 }
@@ -303,7 +301,6 @@ void Parser::suggestionsReply(QNetworkReply *reply)
     QString content;
     QTextCodec * codec = QTextCodec::codecForName("windows-1251");
     content = codec->toUnicode(reply->readAll());
-
 
     // Parsing AddHash(need for adding songs to your library)
     QString addHash;
@@ -508,11 +505,7 @@ void Parser::loadMoreResults()
             m_morePossible = true;
             m_iOffset += 50;
 
-            QNetworkRequest request = QNetworkRequest(QUrl("http://vk.com/audio?act=get_recommendations&al=1&id="+m_Auth->vkId()+"&offset="+QString::number(m_iOffset)));
-
-            m_nManager->disconnect();
-            connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(suggestionsReply(QNetworkReply*)));
-            m_nManager->get(request);
+            suggestions(m_iOffset);
         } else {
             m_morePossible = false;
             Q_EMIT free();
