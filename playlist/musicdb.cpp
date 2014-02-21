@@ -79,7 +79,7 @@ void MusicDB::getReleases(QString strArtistId)
 
     m_Widget->showLoading();
 
-    m_nRequest.setUrl(QUrl(QString("http://musicbrainz.org/ws/2/release/?artist=%0").arg(strArtistId)));
+    m_nRequest.setUrl(QUrl(QString("http://musicbrainz.org/ws/2/release/?artist=%0&limit=50&type=album|ep").arg(strArtistId)));
 
     m_nManager->disconnect();
     connect(m_nManager, SIGNAL(finished(QNetworkReply*)), SLOT(releasesReply(QNetworkReply*)));
